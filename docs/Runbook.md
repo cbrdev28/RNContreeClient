@@ -25,3 +25,14 @@ Other things I have in mind but I will do later:
 - Make better `yarn` commands if I don't find them explicit enough
 - Learn how to write good tests?
 - Eventually build proper foundation to handle styling & GraphQL
+
+## Experimenting with React Navigation
+
+The goal of the first pull request would be to setup React Navigation, bur first I would like to organize the code:
+
+- All the new code will be under the folder `src/`
+- All files should be under their own folder in `src/<FolderName>/`
+- There should be only one file under `src/`, which is our `main.tsx`. This is the equivalent of the base file `index.js`, at a different level, in case we need to make modifications later on.
+- For files which do not belong to a component and cannot really have their own folder, we will keep them in `src/common/`
+- I moved the default/generated React Native demo file under: `src/RNDemoApp/`
+- I will try to use the following name convention for controller files, by adding the suffix `Ctl`, like: `NameOfComponentCtl`
