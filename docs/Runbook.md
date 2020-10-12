@@ -43,3 +43,16 @@ The next goal is to add React Navigation, with a bottom navigator and 2 tabs: on
 
 - Installing React Navigation:
   - https://reactnavigation.org/docs/getting-started
+
+I forgot to keep track in the Runbook...
+
+- I made a first version of a bottom tab navigator
+  - Most of it was hardcoded and only showing:
+    - An empty debug screen, with only one title
+    - The content of the React Native demo app
+- Next attempt was to remove some hardcoded parts:
+  - I made an `enum` for the route names
+  - And a `Record<>` for the screen components
+- After that, I tried to add type support:
+  - https://reactnavigation.org/docs/typescript
+  - I added another file where I declare all the types, not ideal yet...

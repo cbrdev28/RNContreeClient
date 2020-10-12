@@ -6,11 +6,15 @@
 
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import { Route } from './routes';
 import { Screens } from './screens';
+import { BottomTabNavigatorParams } from './types';
 
 export const RootNavigationCtl = () => {
-  const BottomTabNavigator = createBottomTabNavigator();
+  const BottomTabNavigator = createBottomTabNavigator<
+    BottomTabNavigatorParams
+  >();
   return (
     <BottomTabNavigator.Navigator>
       <BottomTabNavigator.Screen
@@ -20,6 +24,7 @@ export const RootNavigationCtl = () => {
       <BottomTabNavigator.Screen
         name={Route.DebugScreen}
         component={Screens.DebugScreen}
+        initialParams={{ testNavParam: 'testing param' }}
       />
     </BottomTabNavigator.Navigator>
   );

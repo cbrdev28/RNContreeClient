@@ -6,11 +6,14 @@
 
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { DebugScreenNavRouteProp } from '../RootNavigation/types';
 
-export const DebugScreen = () => {
+export const DebugScreen = ({ route, navigation }: DebugScreenNavRouteProp) => {
+  const { testNavParam } = route.params;
   return (
     <View style={styles.container}>
       <Text>Hello Debug Screen 2</Text>
+      <Text>Test nav param: {testNavParam}</Text>
     </View>
   );
 };
