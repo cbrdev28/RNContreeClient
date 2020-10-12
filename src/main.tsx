@@ -6,13 +6,8 @@
 import 'react-native-gesture-handler';
 
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { MainAppCtl } from './MainApp/MainAppCtl';
 
 export const Main = () => {
-  return (
-    <NavigationContainer>
-      <MainAppCtl />
-    </NavigationContainer>
-  );
+  return <MainAppCtl />;
 };

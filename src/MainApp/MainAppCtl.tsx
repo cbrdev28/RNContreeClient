@@ -4,8 +4,13 @@
  */
 
 import React from 'react';
-import RNDemoApp from '../RNDemoApp/RNDemoApp';
+import { NavigationContainer } from '@react-navigation/native';
+import { RootNavigationCtl } from '../RootNavigation/RootNavigationCtl';
 
 export const MainAppCtl = () => {
-  return <RNDemoApp />;
+  return (
+    <NavigationContainer>
+      <RootNavigationCtl />
+    </NavigationContainer>
+  );
 };
