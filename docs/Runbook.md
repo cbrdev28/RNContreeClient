@@ -36,3 +36,10 @@ The goal of the first pull request would be to setup React Navigation, bur first
 - For files which do not belong to a component and cannot really have their own folder, we will keep them in `src/common/`
 - I moved the default/generated React Native demo file under: `src/RNDemoApp/`
 - I will try to use the following name convention for controller files, by adding the suffix `Ctl`, like: `NameOfComponentCtl`
+
+### Add React Navigation
+
+The next goal is to add React Navigation, with a bottom navigator and 2 tabs: one for the demo app from React Native, and another one for debug purpose.
+
+- Installing React Navigation:
+  - https://reactnavigation.org/docs/getting-started
