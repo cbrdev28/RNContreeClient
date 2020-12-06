@@ -56,3 +56,22 @@ I forgot to keep track in the Runbook...
 - After that, I tried to add type support:
   - https://reactnavigation.org/docs/typescript
   - I added another file where I declare all the types, not ideal yet...
+
+### Refactor first React Navigation implementation
+
+After thinking (too much), I decided to make some conceptual changes:
+
+- Component hierarchy: no more acronyms like `Ctl`, using full names
+  - Each component/screen users can navigate to, will have a top-level `Container`, to handle all the navigation logic
+  - Then it will have a `Controller`, where other logic (network) will be handled
+  - And finally a component named as its root folder, to render the view
+- Navigators, routes, screens, types, ... (still experimenting as it may change when adding more navigators)
+
+  - I'd like to declare all the route names as an `enum AllRoutes` in `src/common`
+    - Then each navigator will declare their own routes, as a subset of `AllRoutes`
+  - Each navigator will have its own folder, our current one is the `RootNavigation` which has a `RootNavigationController` to render a `BottomTabNavigator` from React Navigation
+    - Each navigator will declare the routes they can navigate to, i.e.: `RootNavigation.routes.ts`
+    - Each navigator will declare a record of the screens they have, i.e.: `RootNavigation.screens.ts`
+    - Each navigator will declare the navigation types/params for each screen they host, i.e.: `RootNavigation.params.ts`
+    - Each navigator will declare their navigation types, i.e.: `RootNavigation.types.ts`
+    - ... still under thought/construction
