@@ -80,3 +80,12 @@ In the end, I realized I was trying to make this too complicated and have someth
 I will still follow those ideas, but we don't need the `enum AllRoutes` for example.
 I'm going to start with the debug screen and a bottom navigator with a simple implementation and we will see how it goes in the future.
 Also, I no longer want to add an extra `Controller` component in the hierarchy. We will start only with `Container`, and `Controller` will be used as "sub-container" (when needed), which cannot be navigated to.
+
+## Experimenting with Apollo Client
+
+We will use Apollo Client to make our GraphQL request:
+
+- https://www.apollographql.com/docs/react/integrations/react-native/
+- The first thing I want to try is to change the Apollo uri from the Debug screen
+  - This may help while debugging since I don't have a stable server
+  - And it will be a first playground to add a sort of text input modal in the Debug screen
