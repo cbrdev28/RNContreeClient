@@ -7,7 +7,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { Route } from './routes';
+import { Route } from './RootNavigation.routes';
 import { Screens } from './screens';
 import { BottomTabNavigatorParams } from './types';
 

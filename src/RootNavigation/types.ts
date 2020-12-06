@@ -7,7 +7,7 @@
 
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { RouteProp } from '@react-navigation/native';
-import { Route } from './routes';
+import { Route } from './RootNavigation.routes';
 
 /**
  * For each route of the bottom tab navigator

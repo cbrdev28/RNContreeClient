@@ -4,7 +4,7 @@
  */
 
 import { ComponentType } from 'react';
-import { Route } from './routes';
+import { Route } from './RootNavigation.routes';
 import { DebugScreen } from '../DebugScreen/DebugScreen';
 import RNDemoApp from '../RNDemoApp/RNDemoApp';
 
