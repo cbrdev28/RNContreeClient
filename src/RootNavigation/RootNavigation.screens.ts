@@ -5,10 +5,10 @@
 
 import { ComponentType } from 'react';
 import { Route } from './RootNavigation.routes';
-import { DebugScreen } from '../DebugScreen/DebugScreen';
 import RNDemoApp from '../RNDemoApp/RNDemoApp';
+import { DebugScreenContainer } from '../DebugScreen/DebugScreenContainer';
 
 export const Screens: Record<Route, ComponentType<any>> = {
-  DebugScreen: DebugScreen,
+  DebugScreen: DebugScreenContainer,
   RNDemoApp: RNDemoApp,
 };
