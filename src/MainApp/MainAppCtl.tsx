@@ -5,12 +5,12 @@
 
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { RootNavigationCtl } from '../RootNavigation/RootNavigationController';
+import { RootNavigationController } from '../RootNavigation/RootNavigationController';
 
 export const MainAppCtl = () => {
   return (
     <NavigationContainer>
-      <RootNavigationCtl />
+      <RootNavigationController />
     </NavigationContainer>
   );
 };

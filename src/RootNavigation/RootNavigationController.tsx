@@ -11,7 +11,7 @@ import { Route } from './RootNavigation.routes';
 import { Screens } from './RootNavigation.screens';
 import { BottomTabNavigatorParams } from './RootNavigation.types';
 
-export const RootNavigationCtl = () => {
+export const RootNavigationController = () => {
   const BottomTabNavigator = createBottomTabNavigator<
     BottomTabNavigatorParams
   >();
