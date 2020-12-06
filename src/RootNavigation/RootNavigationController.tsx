@@ -7,8 +7,8 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { Route } from './RootNavigation.routes';
-import { Screens } from './RootNavigation.screens';
+import { RootNavigationRoutes } from './RootNavigation.routes';
+import { RootNavigationScreens } from './RootNavigation.screens';
 import { BottomTabNavigatorParams } from './RootNavigation.types';
 
 export const RootNavigationController = () => {
@@ -18,13 +18,13 @@ export const RootNavigationController = () => {
   return (
     <BottomTabNavigator.Navigator>
       <BottomTabNavigator.Screen
-        name={Route.RNDemoApp}
-        component={Screens.RNDemoApp}
+        name={RootNavigationRoutes.RNDemoApp}
+        component={RootNavigationScreens.RNDemoApp}
       />
       <BottomTabNavigator.Screen
-        name={Route.DebugScreen}
-        component={Screens.DebugScreen}
-        initialParams={{ testNavParam: 'testing param' }}
+        name={RootNavigationRoutes.DebugScreen}
+        component={RootNavigationScreens.DebugScreen}
+        initialParams={{ testNavParam: 'Test param' }}
       />
     </BottomTabNavigator.Navigator>
   );

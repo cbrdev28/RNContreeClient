@@ -4,12 +4,12 @@
 
 import React from 'react';
 import { DebugScreenNavRouteProp } from '../RootNavigation/RootNavigation.types';
-import { DebugScreenController } from './DebugScreenController';
+import { DebugScreen } from './DebugScreen';
 
 export const DebugScreenContainer = ({
   route,
   navigation,
 }: DebugScreenNavRouteProp) => {
   const { testNavParam } = route.params;
-  return <DebugScreenController testNavParam={testNavParam} />;
+  return <DebugScreen testNavParam={testNavParam} />;
 };

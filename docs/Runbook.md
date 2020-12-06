@@ -75,3 +75,8 @@ After thinking (too much), I decided to make some conceptual changes:
     - Each navigator will declare the navigation types/params for each screen they host, i.e.: `RootNavigation.params.ts`
     - Each navigator will declare their navigation types, i.e.: `RootNavigation.types.ts`
     - ... still under thought/construction
+
+In the end, I realized I was trying to make this too complicated and have something dynamic when adding new screens.
+I will still follow those ideas, but we don't need the `enum AllRoutes` for example.
+I'm going to start with the debug screen and a bottom navigator with a simple implementation and we will see how it goes in the future.
+Also, I no longer want to add an extra `Controller` component in the hierarchy. We will start only with `Container`, and `Controller` will be used as "sub-container" (when needed), which cannot be navigated to.

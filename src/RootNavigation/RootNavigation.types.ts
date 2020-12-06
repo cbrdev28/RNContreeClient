@@ -7,7 +7,7 @@
 
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { RouteProp } from '@react-navigation/native';
-import { Route } from './RootNavigation.routes';
+import { RootNavigationRoutes } from './RootNavigation.routes';
 
 /**
  * For each route of the bottom tab navigator
@@ -24,9 +24,9 @@ interface DebugScreenNavParams {
  * This provides type checking for nav params
  */
 export type BottomTabNavigatorParams = {
-  [Route.DebugScreen]: DebugScreenNavParams;
+  [RootNavigationRoutes.DebugScreen]: DebugScreenNavParams;
   // The React Native demo app will not have any params
-  [Route.RNDemoApp]: undefined;
+  [RootNavigationRoutes.RNDemoApp]: undefined;
 };
 
 /**
@@ -37,7 +37,7 @@ export type BottomTabNavigatorParams = {
  */
 export type DebugScreenRouteProp = RouteProp<
   BottomTabNavigatorParams,
-  Route.DebugScreen
+  RootNavigationRoutes.DebugScreen
 >;
 
 /**
@@ -48,7 +48,7 @@ export type DebugScreenRouteProp = RouteProp<
  */
 export type DebugScreenNavigationProp = BottomTabNavigationProp<
   BottomTabNavigatorParams,
-  Route.DebugScreen
+  RootNavigationRoutes.DebugScreen
 >;
 
 /**
