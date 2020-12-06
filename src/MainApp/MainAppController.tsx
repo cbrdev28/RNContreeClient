@@ -7,7 +7,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { RootNavigationController } from '../RootNavigation/RootNavigationController';
 
-export const MainAppCtl = () => {
+export const MainAppController = () => {
   return (
     <NavigationContainer>
       <RootNavigationController />
