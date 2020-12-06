@@ -36,3 +36,47 @@ The goal of the first pull request would be to setup React Navigation, bur first
 - For files which do not belong to a component and cannot really have their own folder, we will keep them in `src/common/`
 - I moved the default/generated React Native demo file under: `src/RNDemoApp/`
 - I will try to use the following name convention for controller files, by adding the suffix `Ctl`, like: `NameOfComponentCtl`
+
+### Add React Navigation
+
+The next goal is to add React Navigation, with a bottom navigator and 2 tabs: one for the demo app from React Native, and another one for debug purpose.
+
+- Installing React Navigation:
+  - https://reactnavigation.org/docs/getting-started
+
+I forgot to keep track in the Runbook...
+
+- I made a first version of a bottom tab navigator
+  - Most of it was hardcoded and only showing:
+    - An empty debug screen, with only one title
+    - The content of the React Native demo app
+- Next attempt was to remove some hardcoded parts:
+  - I made an `enum` for the route names
+  - And a `Record<>` for the screen components
+- After that, I tried to add type support:
+  - https://reactnavigation.org/docs/typescript
+  - I added another file where I declare all the types, not ideal yet...
+
+### Refactor first React Navigation implementation
+
+After thinking (too much), I decided to make some conceptual changes:
+
+- Component hierarchy: no more acronyms like `Ctl`, using full names
+  - Each component/screen users can navigate to, will have a top-level `Container`, to handle all the navigation logic
+  - Then it will have a `Controller`, where other logic (network) will be handled
+  - And finally a component named as its root folder, to render the view
+- Navigators, routes, screens, types, ... (still experimenting as it may change when adding more navigators)
+
+  - I'd like to declare all the route names as an `enum AllRoutes` in `src/common`
+    - Then each navigator will declare their own routes, as a subset of `AllRoutes`
+  - Each navigator will have its own folder, our current one is the `RootNavigation` which has a `RootNavigationController` to render a `BottomTabNavigator` from React Navigation
+    - Each navigator will declare the routes they can navigate to, i.e.: `RootNavigation.routes.ts`
+    - Each navigator will declare a record of the screens they have, i.e.: `RootNavigation.screens.ts`
+    - Each navigator will declare the navigation types/params for each screen they host, i.e.: `RootNavigation.params.ts`
+    - Each navigator will declare their navigation types, i.e.: `RootNavigation.types.ts`
+    - ... still under thought/construction
+
+In the end, I realized I was trying to make this too complicated and have something dynamic when adding new screens.
+I will still follow those ideas, but we don't need the `enum AllRoutes` for example.
+I'm going to start with the debug screen and a bottom navigator with a simple implementation and we will see how it goes in the future.
+Also, I no longer want to add an extra `Controller` component in the hierarchy. We will start only with `Container`, and `Controller` will be used as "sub-container" (when needed), which cannot be navigated to.
