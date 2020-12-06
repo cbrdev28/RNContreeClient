@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { RootNavigationCtl } from '../RootNavigation/RootNavigationCtl';
+import { RootNavigationCtl } from '../RootNavigation/RootNavigationController';
 
 export const MainAppCtl = () => {
   return (
