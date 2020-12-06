@@ -9,7 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Route } from './RootNavigation.routes';
 import { Screens } from './RootNavigation.screens';
-import { BottomTabNavigatorParams } from './types';
+import { BottomTabNavigatorParams } from './RootNavigation.types';
 
 export const RootNavigationCtl = () => {
   const BottomTabNavigator = createBottomTabNavigator<
