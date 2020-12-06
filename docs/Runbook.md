@@ -89,3 +89,16 @@ We will use Apollo Client to make our GraphQL request:
 - The first thing I want to try is to change the Apollo uri from the Debug screen
   - This may help while debugging since I don't have a stable server
   - And it will be a first playground to add a sort of text input modal in the Debug screen
+
+### Using React Context
+
+Before I add the Apollo Client, I would like to make sure I have a way to provide some environment data in the React Context.
+There is no obvious documentation about React Context, at least nothing I found very straightforward, so we will explore with code.
+
+Here is a train of thoughts:
+
+- Make a component to provide an environment object in the React Context
+  - This component will be loading data asynchronously
+  - It will be inside the `MainAppController`
+- Declare an `Environment` interface
+- Think about having an `AsyncStorageManager`, which would be inside the `MainAppController` for now
