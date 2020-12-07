@@ -6,11 +6,14 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { RootNavigationController } from '../RootNavigation/RootNavigationController';
+import { EnvironmentContextProvider } from './EnvironmentContext/EnvironmentContextProvider';
 
 export const MainAppController = () => {
   return (
     <NavigationContainer>
-      <RootNavigationController />
+      <EnvironmentContextProvider>
+        <RootNavigationController />
+      </EnvironmentContextProvider>
     </NavigationContainer>
   );
 };

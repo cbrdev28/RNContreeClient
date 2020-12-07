@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import { useEnvironmentContext } from '../MainApp/EnvironmentContext/EnvironmentContextProvider';
 import { DebugScreenNavRouteProp } from '../RootNavigation/RootNavigation.types';
 import { DebugScreen } from './DebugScreen';
 
@@ -11,5 +12,12 @@ export const DebugScreenContainer = ({
   navigation,
 }: DebugScreenNavRouteProp) => {
   const { testNavParam } = route.params;
-  return <DebugScreen testNavParam={testNavParam} />;
+  const envContext = useEnvironmentContext();
+
+  return (
+    <DebugScreen
+      testNavParam={testNavParam}
+      apolloServerUriFromContext={envContext.apolloServerUri}
+    />
+  );
 };
