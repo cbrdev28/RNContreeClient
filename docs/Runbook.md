@@ -102,3 +102,11 @@ Here is a train of thoughts:
   - It will be inside the `MainAppController`
 - Declare an `Environment` interface
 - Think about having an `AsyncStorageManager`, which would be inside the `MainAppController` for now
+
+### Adding Apollo Client
+
+By experimenting:
+
+- Add `"@apollo/client": "3.2.7"` in `package.json`
+  - Which REQUIRES: `"graphql": "15.4.0"` in `package.json`
+- Made my own provider component: `NetworkProvider`, for Apollo Client
