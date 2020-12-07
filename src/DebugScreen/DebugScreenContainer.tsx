@@ -18,6 +18,7 @@ export const DebugScreenContainer = ({
     <DebugScreen
       testNavParam={testNavParam}
       apolloServerUriFromContext={envContext.apolloServerUri}
+      apolloServerUriDebugFromContext={envContext?.apolloServerUriDebug}
     />
   );
 };

@@ -5,4 +5,5 @@
 
 export interface Environment {
   apolloServerUri: string;
+  apolloServerUriDebug?: string;
 }

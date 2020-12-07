@@ -10,6 +10,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export interface DebugScreenProps {
   testNavParam: string;
   apolloServerUriFromContext: string;
+  apolloServerUriDebugFromContext?: string;
 }
 
 export const DebugScreen = (props: DebugScreenProps) => {
@@ -17,8 +18,10 @@ export const DebugScreen = (props: DebugScreenProps) => {
     <View style={styles.container}>
       <Text>Hello Debug Screen 2</Text>
       <Text>Test nav param: {props.testNavParam}</Text>
+      <Text>URI: {props.apolloServerUriFromContext}</Text>
       <Text>
-        Apollo server URI from context: {props.apolloServerUriFromContext}
+        Debug URI:
+        {props.apolloServerUriDebugFromContext}
       </Text>
     </View>
   );

@@ -9,8 +9,10 @@ import { useEnvironmentContext } from '../MainApp/EnvironmentContext/Environment
 
 export const NetworkProvider = (props: { children: React.ReactNode }) => {
   const envContext = useEnvironmentContext();
+  const apolloUri =
+    envContext.apolloServerUriDebug || envContext.apolloServerUri;
   const apolloClient = new ApolloClient({
-    uri: envContext.apolloServerUri,
+    uri: apolloUri,
     cache: new InMemoryCache(),
   });
 
