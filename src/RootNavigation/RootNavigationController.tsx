@@ -15,6 +15,7 @@ export const RootNavigationController = () => {
   const BottomTabNavigator = createBottomTabNavigator<
     BottomTabNavigatorParams
   >();
+
   return (
     <BottomTabNavigator.Navigator>
       <BottomTabNavigator.Screen
