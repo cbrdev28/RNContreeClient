@@ -110,3 +110,9 @@ By experimenting:
 - Add `"@apollo/client": "3.2.7"` in `package.json`
   - Which REQUIRES: `"graphql": "15.4.0"` in `package.json`
 - Made my own provider component: `NetworkProvider`, for Apollo Client
+
+About our AsyncStorage wrapper:
+
+- I had to add another dependency:
+  - https://react-native-async-storage.github.io/async-storage/docs/install
+  - Requires to manually run: `pod install` in the `ios` folder
