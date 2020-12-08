@@ -1,6 +1,6 @@
 /**
- * This is the main app component
- * This is where core setup and providers will be handled
+ * This is the main app component.
+ * This is where core setup and providers will be handled.
  */
 
 import React from 'react';

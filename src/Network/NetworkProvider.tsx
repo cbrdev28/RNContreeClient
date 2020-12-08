@@ -1,6 +1,6 @@
 /**
- * This is our Network Provider component
- * It's a wrapper of the ApolloProvider
+ * This is our Network Provider component.
+ * It's a wrapper of the ApolloProvider.
  */
 
 import React, { useMemo } from 'react';

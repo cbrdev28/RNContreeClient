@@ -1,6 +1,6 @@
 /**
  * This file defines the table to match each navigable
- * route to a container, for the root navigation
+ * route to a container, for the root navigation.
  */
 
 import { ComponentType } from 'react';

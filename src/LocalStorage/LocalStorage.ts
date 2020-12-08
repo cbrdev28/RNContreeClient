@@ -1,6 +1,6 @@
 /**
  * This file wraps the AsyncStorage from React Native
- * and provide an API for our app to locally store data
+ * and provide an API for our app to locally store data.
  *
  * The AsyncStorage we use can only store `strings` or
  * object that can be serialized:

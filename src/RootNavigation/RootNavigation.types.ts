@@ -21,7 +21,7 @@ interface DebugScreenNavParams {
 /**
  * The BottomTabNavigator from react navigation will
  * use this type definition for each screen.
- * This provides type checking for nav params
+ * This provides type checking for nav params.
  */
 export type BottomTabNavigatorParams = {
   [RootNavigationRoutes.DebugScreen]: DebugScreenNavParams;
@@ -52,7 +52,7 @@ export type DebugScreenNavigationProp = BottomTabNavigationProp<
 >;
 
 /**
- * This type can be used by the DebugScreen component
+ * This type can be used by the DebugScreen component.
  */
 export type DebugScreenNavRouteProp = {
   route: DebugScreenRouteProp;

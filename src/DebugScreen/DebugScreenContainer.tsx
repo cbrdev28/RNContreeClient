@@ -1,5 +1,5 @@
 /**
- * This file is the container for the debug screen
+ * This file is the container for the debug screen.
  */
 
 import React from 'react';

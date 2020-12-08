@@ -1,6 +1,5 @@
 /**
- * This file creates the React Context
- * for the Environment
+ * This file creates the React Context for the Environment.
  */
 
 import React from 'react';
