@@ -5,9 +5,18 @@
  */
 
 import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { RootBottomNavigator } from './RootBottomNavigator';
+import { RootBottomNavigator } from './RootBottomNavigator/RootBottomNavigator';
 
 export const RootNavigationController = () => {
-  return <RootBottomNavigator />;
+  const RootModalStackNavigator = createStackNavigator();
+  return (
+    <RootModalStackNavigator.Navigator mode="modal">
+      <RootModalStackNavigator.Screen
+        name={'RootBottomNavigator'}
+        component={RootBottomNavigator}
+      />
+    </RootModalStackNavigator.Navigator>
+  );
 };
