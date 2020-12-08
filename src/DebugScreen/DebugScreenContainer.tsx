@@ -9,7 +9,7 @@ import { DebugScreen } from './DebugScreen';
 
 export const DebugScreenContainer = ({
   route,
-  navigation,
+  navigation: _navigation,
 }: DebugScreenNavRouteProp) => {
   const { testNavParam } = route.params;
   const envContext = useEnvironmentContext();

@@ -10,7 +10,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export interface DebugScreenProps {
   testNavParam: string;
   apolloServerUriFromContext: string;
-  apolloServerUriDebugFromContext?: string;
+  apolloServerUriDebugFromContext?: string | null;
 }
 
 export const DebugScreen = (props: DebugScreenProps) => {
