@@ -6,11 +6,13 @@
 
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export interface DebugScreenProps {
   testNavParam: string;
   apolloServerUriFromContext: string;
   apolloServerUriDebugFromContext?: string | null;
+  showModal: () => void;
 }
 
 export const DebugScreen = (props: DebugScreenProps) => {
@@ -23,6 +25,9 @@ export const DebugScreen = (props: DebugScreenProps) => {
         Debug URI:
         {props.apolloServerUriDebugFromContext}
       </Text>
+      <TouchableOpacity onPress={props.showModal}>
+        <Text>Show modal</Text>
+      </TouchableOpacity>
     </View>
   );
 };

@@ -5,8 +5,29 @@
  * which are automatically passed by react navigation to our screens.
  */
 
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { RootNavigationRoutes } from './RootNavigation.routes';
 
 export type RootModalStackNavigatorParams = {
   [RootNavigationRoutes.RootBottomNavigator]: undefined;
+  [RootNavigationRoutes.TextInputModal]: undefined;
+};
+
+// Define route type for the text input modal container
+type TextInputModalRouteProp = RouteProp<
+  RootModalStackNavigatorParams,
+  RootNavigationRoutes.TextInputModal
+>;
+
+// Define navigation type for the text input modal container
+type TextInputModalNavProp = StackNavigationProp<
+  RootModalStackNavigatorParams,
+  RootNavigationRoutes.TextInputModal
+>;
+
+// Type to be used by TextInputModalContainer props
+export type TextInputModalNavRouteProp = {
+  route: TextInputModalRouteProp;
+  navigation: TextInputModalNavProp;
 };

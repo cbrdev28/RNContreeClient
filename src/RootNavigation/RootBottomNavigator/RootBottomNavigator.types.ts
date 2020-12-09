@@ -6,7 +6,9 @@
  */
 
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { RouteProp } from '@react-navigation/native';
+import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootModalStackNavigatorParams } from '../RootNavigation.types';
 import { RootBottomNavigatorRoutes } from './RootBottomNavigator.routes';
 
 /**
@@ -46,9 +48,12 @@ type DebugScreenRouteProp = RouteProp<
  * The navigation prop are automatically passed by
  * react navigation when adding a screen.
  */
-type DebugScreenNavigationProp = BottomTabNavigationProp<
-  BottomTabNavigatorParams,
-  RootBottomNavigatorRoutes.DebugScreen
+type DebugScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootModalStackNavigatorParams>,
+  BottomTabNavigationProp<
+    BottomTabNavigatorParams,
+    RootBottomNavigatorRoutes.DebugScreen
+  >
 >;
 
 /**

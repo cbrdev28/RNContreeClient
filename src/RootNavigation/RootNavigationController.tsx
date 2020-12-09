@@ -15,11 +15,18 @@ export const RootNavigationController = () => {
   const RootModalStackNavigator = createStackNavigator<
     RootModalStackNavigatorParams
   >();
+
   return (
     <RootModalStackNavigator.Navigator mode="modal">
       <RootModalStackNavigator.Screen
         name={RootNavigationRoutes.RootBottomNavigator}
         component={RootNavigationScreens.RootBottomNavigator}
+        options={{ headerShown: false }}
+      />
+      <RootModalStackNavigator.Screen
+        name={RootNavigationRoutes.TextInputModal}
+        component={RootNavigationScreens.TextInputModal}
+        options={{ headerShown: false }}
       />
     </RootModalStackNavigator.Navigator>
   );
