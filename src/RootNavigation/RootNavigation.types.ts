@@ -1,60 +1,12 @@
 /**
  * This file contains the type definition for each screens
- * we add in the navigation tree.
+ * we add in the root navigation tree.
  * This helps provide type checking for navigation & route props
  * which are automatically passed by react navigation to our screens.
  */
 
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { RouteProp } from '@react-navigation/native';
 import { RootNavigationRoutes } from './RootNavigation.routes';
 
-/**
- * For each route of the bottom tab navigator
- * we define the type of their params.
- * We only try that with our Debug Screen.
- */
-interface DebugScreenNavParams {
-  testNavParam: string;
-}
-
-/**
- * The BottomTabNavigator from react navigation will
- * use this type definition for each screen.
- * This provides type checking for nav params.
- */
-export type BottomTabNavigatorParams = {
-  [RootNavigationRoutes.DebugScreen]: DebugScreenNavParams;
-  // The React Native demo app will not have any params
-  [RootNavigationRoutes.RNDemoApp]: undefined;
-};
-
-/**
- * For each screen of the bottom tab navigator
- * we define the type of their route prop.
- * The route prop are automatically passed by
- * react navigation when adding a screen.
- */
-export type DebugScreenRouteProp = RouteProp<
-  BottomTabNavigatorParams,
-  RootNavigationRoutes.DebugScreen
->;
-
-/**
- * For each screen of the bottom tab navigator
- * we define the type of their navigation prop.
- * The navigation prop are automatically passed by
- * react navigation when adding a screen.
- */
-export type DebugScreenNavigationProp = BottomTabNavigationProp<
-  BottomTabNavigatorParams,
-  RootNavigationRoutes.DebugScreen
->;
-
-/**
- * This type can be used by the DebugScreen component.
- */
-export type DebugScreenNavRouteProp = {
-  route: DebugScreenRouteProp;
-  navigation: DebugScreenNavigationProp;
+export type RootModalStackNavigatorParams = {
+  [RootNavigationRoutes.RootBottomNavigator]: undefined;
 };

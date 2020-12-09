@@ -8,9 +8,9 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { RootNavigationRoutes } from '../RootNavigation.routes';
-import { RootNavigationScreens } from '../RootNavigation.screens';
-import { BottomTabNavigatorParams } from '../RootNavigation.types';
+import { BottomTabNavigatorParams } from './RootBottomNavigator.types';
+import { RootBottomNavigatorRoutes } from './RootBottomNavigator.routes';
+import { RootBottomNavigatorScreens } from './RootBottomNavigator.screens';
 
 export const RootBottomNavigator = () => {
   const BottomTabNavigator = createBottomTabNavigator<
@@ -20,12 +20,12 @@ export const RootBottomNavigator = () => {
   return (
     <BottomTabNavigator.Navigator>
       <BottomTabNavigator.Screen
-        name={RootNavigationRoutes.RNDemoApp}
-        component={RootNavigationScreens.RNDemoApp}
+        name={RootBottomNavigatorRoutes.RNDemoApp}
+        component={RootBottomNavigatorScreens.RNDemoApp}
       />
       <BottomTabNavigator.Screen
-        name={RootNavigationRoutes.DebugScreen}
-        component={RootNavigationScreens.DebugScreen}
+        name={RootBottomNavigatorRoutes.DebugScreen}
+        component={RootBottomNavigatorScreens.DebugScreen}
         initialParams={{ testNavParam: 'Test param' }}
       />
     </BottomTabNavigator.Navigator>

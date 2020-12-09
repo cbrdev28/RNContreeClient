@@ -1,9 +1,8 @@
 /**
  * This file defines the available routes for the root navigation
- * which is a bottom tab navigator.
+ * which is also our modal layer
  */
 
 export enum RootNavigationRoutes {
-  DebugScreen = 'DebugScreen',
-  RNDemoApp = 'RNDemoApp',
+  RootBottomNavigator = 'RootBottomNavigator',
 }

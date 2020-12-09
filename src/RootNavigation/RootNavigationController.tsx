@@ -7,15 +7,19 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { RootBottomNavigator } from './RootBottomNavigator/RootBottomNavigator';
+import { RootNavigationRoutes } from './RootNavigation.routes';
+import { RootNavigationScreens } from './RootNavigation.screens';
+import { RootModalStackNavigatorParams } from './RootNavigation.types';
 
 export const RootNavigationController = () => {
-  const RootModalStackNavigator = createStackNavigator();
+  const RootModalStackNavigator = createStackNavigator<
+    RootModalStackNavigatorParams
+  >();
   return (
     <RootModalStackNavigator.Navigator mode="modal">
       <RootModalStackNavigator.Screen
-        name={'RootBottomNavigator'}
-        component={RootBottomNavigator}
+        name={RootNavigationRoutes.RootBottomNavigator}
+        component={RootNavigationScreens.RootBottomNavigator}
       />
     </RootModalStackNavigator.Navigator>
   );

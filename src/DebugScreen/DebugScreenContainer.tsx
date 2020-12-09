@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { useEnvironmentContext } from '../MainApp/EnvironmentContext/EnvironmentContextProvider';
-import { DebugScreenNavRouteProp } from '../RootNavigation/RootNavigation.types';
+import { DebugScreenNavRouteProp } from '../RootNavigation/RootBottomNavigator/RootBottomNavigator.types';
 import { DebugScreen } from './DebugScreen';
 
 export const DebugScreenContainer = ({
