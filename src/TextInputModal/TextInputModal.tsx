@@ -15,14 +15,16 @@ interface TextInputModalProps {
 export const TextInputModal = (props: TextInputModalProps) => {
   return (
     <View style={styles.container}>
-      <Text>Modal title</Text>
-      <Text>Modal message is usually longer than a few words</Text>
-      <TouchableOpacity>
-        <Text>Submit button title</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={props.onDismiss}>
-        <Text>Dismiss button title</Text>
-      </TouchableOpacity>
+      <View style={styles.content}>
+        <Text>Modal title</Text>
+        <Text>Modal message is usually longer than a few words</Text>
+        <TouchableOpacity>
+          <Text>Submit button title</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={props.onDismiss}>
+          <Text>Dismiss button title</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -32,5 +34,20 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  content: {
+    alignItems: 'center',
+    padding: 8,
+
+    backgroundColor: 'white',
+
+    shadowColor: 'gray',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 8,
+    elevation: 4,
   },
 });
