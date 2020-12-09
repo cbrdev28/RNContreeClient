@@ -5,8 +5,9 @@
  */
 
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { LabelValueText } from './LabelValueText';
 
 export interface DebugScreenProps {
   testNavParam: string;
@@ -18,15 +19,15 @@ export interface DebugScreenProps {
 export const DebugScreen = (props: DebugScreenProps) => {
   return (
     <View style={styles.container}>
-      <Text>Hello Debug Screen 2</Text>
-      <Text>Test nav param: {props.testNavParam}</Text>
-      <Text>URI: {props.apolloServerUriFromContext}</Text>
-      <Text>
-        Debug URI:
-        {props.apolloServerUriDebugFromContext}
-      </Text>
+      <LabelValueText label={'Hello'} value={'Debug'} />
+      <LabelValueText label={'Test nav param'} value={props.testNavParam} />
+      <LabelValueText label={'URI'} value={props.apolloServerUriFromContext} />
+      <LabelValueText
+        label={'Debug URI'}
+        value={props.apolloServerUriDebugFromContext || ''}
+      />
       <TouchableOpacity onPress={props.showModal}>
-        <Text>Show modal</Text>
+        <LabelValueText label={'Show modal'} value={''} />
       </TouchableOpacity>
     </View>
   );
@@ -36,6 +37,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
   },
 });
