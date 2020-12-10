@@ -5,8 +5,8 @@
  */
 
 import React, { useCallback, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import { Keyboard, StyleSheet, Text, View, TextInput } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 interface TextInputModalProps {
   onDismiss: () => void;
@@ -14,14 +14,22 @@ interface TextInputModalProps {
 }
 
 export const TextInputModal = (props: TextInputModalProps) => {
-  const { onSubmit } = props;
+  const { onSubmit, onDismiss } = props;
   const [inputText, setInputText] = useState('');
+
   const onChangeText = useCallback((text: string) => {
     setInputText(text);
   }, []);
+
   const onSubmitText = useCallback(() => {
+    Keyboard.dismiss();
     onSubmit(inputText);
   }, [onSubmit, inputText]);
+
+  const onDismissModal = useCallback(() => {
+    Keyboard.dismiss();
+    onDismiss();
+  }, [onDismiss]);
 
   return (
     <View style={styles.container}>
@@ -33,7 +41,11 @@ export const TextInputModal = (props: TextInputModalProps) => {
           onChangeText={onChangeText}
           autoCapitalize={'none'}
           autoCorrect={false}
-          autoFocus={true}
+
+          // This shows an error/warning in the Xcode console
+          // 2020-12-10 07:50:20.202027-0800 RNContreeClient[3609:114892] [Common] _BSMachError: port d533; (os/kern) invalid capability (0x14) "Unable to insert COPY_SEND"
+          // Basically we need to properly show/dismiss the keyboard, from what I investigated
+          // autoFocus={true}
         />
         <View style={styles.buttons}>
           <TouchableOpacity
@@ -41,7 +53,7 @@ export const TextInputModal = (props: TextInputModalProps) => {
             onPress={onSubmitText}>
             <Text style={[styles.buttonText, styles.submitText]}>Submit</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={props.onDismiss}>
+          <TouchableOpacity style={styles.button} onPress={onDismissModal}>
             <Text style={styles.buttonText}>Dismiss</Text>
           </TouchableOpacity>
         </View>
