@@ -13,5 +13,13 @@ export const TextInputModalContainer = ({
   const dismiss = useCallback(() => {
     navigation.goBack();
   }, [navigation]);
-  return <TextInputModal onDismiss={dismiss} />;
+  const submit = useCallback(
+    (text: string) => {
+      console.warn('Submitted: ' + text);
+      dismiss();
+    },
+    [dismiss],
+  );
+
+  return <TextInputModal onDismiss={dismiss} onSubmit={submit} />;
 };

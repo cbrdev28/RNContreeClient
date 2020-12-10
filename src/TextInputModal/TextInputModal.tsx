@@ -4,22 +4,41 @@
  * And a way to dismiss the modal.
  */
 
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
 interface TextInputModalProps {
   onDismiss: () => void;
+  onSubmit: (text: string) => void;
 }
 
 export const TextInputModal = (props: TextInputModalProps) => {
+  const { onSubmit } = props;
+  const [inputText, setInputText] = useState('');
+  const onChangeText = useCallback((text: string) => {
+    setInputText(text);
+  }, []);
+  const onSubmitText = useCallback(() => {
+    onSubmit(inputText);
+  }, [onSubmit, inputText]);
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.title}>Enter server URI:</Text>
-        <TextInput style={styles.textInput} />
+        <TextInput
+          style={styles.textInput}
+          value={inputText}
+          onChangeText={onChangeText}
+          autoCapitalize={'none'}
+          autoCorrect={false}
+          autoFocus={true}
+        />
         <View style={styles.buttons}>
-          <TouchableOpacity style={[styles.button, styles.submitButton]}>
+          <TouchableOpacity
+            style={[styles.button, styles.submitButton]}
+            onPress={onSubmitText}>
             <Text style={[styles.buttonText, styles.submitText]}>Submit</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={props.onDismiss}>
