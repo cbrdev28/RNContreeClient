@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
 interface TextInputModalProps {
   onDismiss: () => void;
@@ -16,14 +16,16 @@ export const TextInputModal = (props: TextInputModalProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Text>Modal title</Text>
-        <Text>Modal message is usually longer than a few words</Text>
-        <TouchableOpacity>
-          <Text>Submit button title</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={props.onDismiss}>
-          <Text>Dismiss button title</Text>
-        </TouchableOpacity>
+        <Text style={styles.title}>Enter server URI:</Text>
+        <TextInput style={styles.textInput} />
+        <View style={styles.buttons}>
+          <TouchableOpacity style={[styles.button, styles.submitButton]}>
+            <Text style={[styles.buttonText, styles.submitText]}>Submit</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={props.onDismiss}>
+            <Text style={styles.buttonText}>Dismiss</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -33,14 +35,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    paddingHorizontal: 32,
   },
   content: {
-    alignItems: 'center',
-    padding: 8,
-
+    padding: 16,
     backgroundColor: 'white',
-
     shadowColor: 'gray',
     shadowOffset: {
       width: 0,
@@ -49,5 +48,35 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 8,
     elevation: 4,
+  },
+  title: {
+    fontSize: 18,
+    marginBottom: 4,
+  },
+  textInput: {
+    borderColor: 'blue',
+    borderWidth: 1,
+    borderRadius: 4,
+    padding: 8,
+    marginBottom: 4,
+  },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  button: {
+    borderWidth: 1,
+    borderRadius: 4,
+    paddingVertical: 8,
+    paddingHorizontal: 32,
+  },
+  submitButton: {
+    borderColor: 'green',
+  },
+  buttonText: {
+    fontSize: 16,
+  },
+  submitText: {
+    color: 'green',
   },
 });
