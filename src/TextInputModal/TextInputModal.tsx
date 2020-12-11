@@ -10,7 +10,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 interface TextInputModalProps {
   onDismiss: () => void;
-  onSubmit: (text: string) => void;
+  onSubmit: (text: string) => Promise<void>;
 }
 
 export const TextInputModal = (props: TextInputModalProps) => {
@@ -21,9 +21,9 @@ export const TextInputModal = (props: TextInputModalProps) => {
     setInputText(text);
   }, []);
 
-  const onSubmitText = useCallback(() => {
+  const onSubmitText = useCallback(async () => {
     Keyboard.dismiss();
-    onSubmit(inputText);
+    await onSubmit(inputText);
   }, [onSubmit, inputText]);
 
   const onDismissModal = useCallback(() => {

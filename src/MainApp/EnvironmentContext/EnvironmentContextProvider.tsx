@@ -5,7 +5,7 @@
  * indicator during that time.
  */
 
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Environment } from '../../Environment/Environment';
 import { FullScreenLoadingIndicator } from '../../FullScreenLoadingIndicator/FullScreenLoadingIndicator';
 import { LocalStorage } from '../../LocalStorage/LocalStorage';
@@ -36,18 +36,27 @@ export const EnvironmentContextProvider = (props: {
     fetchLocalStorageEnvData();
   }, []);
 
+  const [debugUri, setDebugUri] = useState<string>('');
+  const setApolloServerUriDebug = useCallback(async (apolloUri: string) => {
+    await LocalStorage.set(LocalStorage.Keys.apolloServerUri, apolloUri);
+    setDebugUri(apolloUri);
+  }, []);
+
   // Our default Environment object with static values
   const defaultEnvContext = useMemo<Environment>(() => {
     return {
       apolloServerUri: 'apolloServerUriProvider',
+      setApolloServerUriDebug,
     };
-  }, []);
+  }, [setApolloServerUriDebug]);
 
   // Update Environment with values from local storage
-  const envContext: Environment = {
-    ...defaultEnvContext,
-    apolloServerUriDebug: localStorageEnv?.apolloServerUri,
-  };
+  const envContext = useMemo<Environment>(() => {
+    return {
+      ...defaultEnvContext,
+      apolloServerUriDebug: debugUri || localStorageEnv?.apolloServerUri,
+    };
+  }, [defaultEnvContext, debugUri, localStorageEnv]);
 
   if (loading) {
     return <FullScreenLoadingIndicator />;

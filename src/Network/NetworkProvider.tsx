@@ -9,15 +9,13 @@ import { useEnvironmentContext } from '../MainApp/EnvironmentContext/Environment
 
 export const NetworkProvider = (props: { children: React.ReactNode }) => {
   const envContext = useEnvironmentContext();
-  const apolloUri =
-    envContext.apolloServerUriDebug || envContext.apolloServerUri;
 
   const apolloClient = useMemo(() => {
     return new ApolloClient({
-      uri: apolloUri,
+      uri: envContext.apolloServerUriDebug || envContext.apolloServerUri,
       cache: new InMemoryCache(),
     });
-  }, [apolloUri]);
+  }, [envContext]);
 
   return (
     <ApolloProvider client={apolloClient}>{props.children}</ApolloProvider>

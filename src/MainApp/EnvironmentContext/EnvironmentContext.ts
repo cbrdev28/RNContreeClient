@@ -7,6 +7,7 @@ import { Environment } from '../../Environment/Environment';
 
 const defaultContext: Environment = {
   apolloServerUri: 'defaultApolloServerUri',
+  setApolloServerUriDebug: async (_uri: string) => {},
 };
 
 export const EnvironmentContext = React.createContext<Environment>(
