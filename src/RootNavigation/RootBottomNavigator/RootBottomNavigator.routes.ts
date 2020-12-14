@@ -6,4 +6,5 @@
 export enum RootBottomNavigatorRoutes {
   DebugScreen = 'DebugScreen',
   RNDemoApp = 'RNDemoApp',
+  home = 'home',
 }

@@ -29,6 +29,7 @@ export type BottomTabNavigatorParams = {
   [RootBottomNavigatorRoutes.DebugScreen]: DebugScreenNavParams;
   // The React Native demo app will not have any params
   [RootBottomNavigatorRoutes.RNDemoApp]: undefined;
+  [RootBottomNavigatorRoutes.home]: undefined;
 };
 
 /**
@@ -48,6 +49,7 @@ type DebugScreenRouteProp = RouteProp<
  * The navigation prop are automatically passed by
  * react navigation when adding a screen.
  */
+// TODO: add route to `StackNavigationProp<RootModalStackNavigatorParams>`
 type DebugScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootModalStackNavigatorParams>,
   BottomTabNavigationProp<

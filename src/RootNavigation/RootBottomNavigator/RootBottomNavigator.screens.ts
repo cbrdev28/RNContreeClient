@@ -8,6 +8,7 @@ import { ComponentType } from 'react';
 import RNDemoApp from '../../RNDemoApp/RNDemoApp';
 import { DebugScreenContainer } from '../../DebugScreen/DebugScreenContainer';
 import { RootBottomNavigatorRoutes } from './RootBottomNavigator.routes';
+import { HomeStackNavigator } from '../../HomeStackNavigator/HomeStackNavigator';
 
 export const RootBottomNavigatorScreens: Record<
   RootBottomNavigatorRoutes,
@@ -15,4 +16,5 @@ export const RootBottomNavigatorScreens: Record<
 > = {
   DebugScreen: DebugScreenContainer,
   RNDemoApp: RNDemoApp,
+  home: HomeStackNavigator,
 };

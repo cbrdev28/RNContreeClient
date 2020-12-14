@@ -24,6 +24,10 @@ export const RootBottomNavigator = () => {
         component={RootBottomNavigatorScreens.RNDemoApp}
       />
       <BottomTabNavigator.Screen
+        name={RootBottomNavigatorRoutes.home}
+        component={RootBottomNavigatorScreens.home}
+      />
+      <BottomTabNavigator.Screen
         name={RootBottomNavigatorRoutes.DebugScreen}
         component={RootBottomNavigatorScreens.DebugScreen}
         initialParams={{ testNavParam: 'Test param' }}
