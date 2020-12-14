@@ -16,7 +16,7 @@ import { HomeStackNavigatorParams } from '../../HomeStackNavigator.types';
 export type WelcomeNavigationProp = CompositeNavigationProp<
   StackNavigationProp<
     RootModalStackNavigatorParams,
-    RootNavigationRoutes.RootBottomNavigator
+    RootNavigationRoutes.rootBottomNavigator
   >,
   CompositeNavigationProp<
     BottomTabNavigationProp<

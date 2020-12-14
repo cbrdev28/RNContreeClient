@@ -34,7 +34,7 @@ export const DebugScreenContainer = ({
   const envContext = useEnvironmentContext();
 
   const showModal = useCallback(() => {
-    navigation.navigate(RootNavigationRoutes.TextInputModal);
+    navigation.navigate(RootNavigationRoutes.textInputModal);
   }, [navigation]);
 
   const gqlQuery = gql`

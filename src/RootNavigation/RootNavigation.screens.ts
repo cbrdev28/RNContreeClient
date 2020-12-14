@@ -13,6 +13,6 @@ export const RootNavigationScreens: Record<
   RootNavigationRoutes,
   ComponentType<any>
 > = {
-  RootBottomNavigator: RootBottomNavigator,
-  TextInputModal: TextInputModalContainer,
+  rootBottomNavigator: RootBottomNavigator,
+  textInputModal: TextInputModalContainer,
 };

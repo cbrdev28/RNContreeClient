@@ -16,7 +16,7 @@ import { HomeStackNavigatorParams } from '../../HomeStackNavigator.types';
 export type AuthenticationNavigationProp = CompositeNavigationProp<
   StackNavigationProp<
     RootModalStackNavigatorParams,
-    RootNavigationRoutes.RootBottomNavigator
+    RootNavigationRoutes.rootBottomNavigator
   >,
   CompositeNavigationProp<
     BottomTabNavigationProp<

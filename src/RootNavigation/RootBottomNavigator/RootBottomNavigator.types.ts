@@ -53,7 +53,7 @@ type DebugScreenRouteProp = RouteProp<
 type DebugScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<
     RootModalStackNavigatorParams,
-    RootNavigationRoutes.RootBottomNavigator
+    RootNavigationRoutes.rootBottomNavigator
   >,
   BottomTabNavigationProp<
     BottomTabNavigatorParams,
