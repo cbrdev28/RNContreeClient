@@ -116,3 +116,7 @@ About our AsyncStorage wrapper:
 - I had to add another dependency:
   - https://react-native-async-storage.github.io/async-storage/docs/install
   - Requires to manually run: `pod install` in the `ios` folder
+
+### First query in Debug Screen
+
+I'm going to play around with Apollo and make a first query of the debug screen.

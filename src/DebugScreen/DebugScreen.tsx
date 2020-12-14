@@ -14,6 +14,11 @@ export interface DebugScreenProps {
   apolloServerUriFromContext: string;
   apolloServerUriDebugFromContext?: string | null;
   showModal: () => void;
+
+  userToken: string | undefined;
+  userId: number | undefined;
+  userName: string | undefined;
+  userEmail: string | undefined;
 }
 
 export const DebugScreen = (props: DebugScreenProps) => {
@@ -27,8 +32,15 @@ export const DebugScreen = (props: DebugScreenProps) => {
         value={props.apolloServerUriDebugFromContext || ''}
       />
       <TouchableOpacity onPress={props.showModal}>
-        <LabelValueText label={'Show modal'} value={''} />
+        <LabelValueText label={'Edit Debug URI'} value={''} />
       </TouchableOpacity>
+      <LabelValueText label={'User token'} value={props.userToken || ''} />
+      <LabelValueText
+        label={'User id'}
+        value={props.userId?.toString() || ''}
+      />
+      <LabelValueText label={'User name'} value={props.userName || ''} />
+      <LabelValueText label={'User email'} value={props.userEmail || ''} />
     </View>
   );
 };

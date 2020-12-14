@@ -45,7 +45,7 @@ export const EnvironmentContextProvider = (props: {
   // Our default Environment object with static values
   const defaultEnvContext = useMemo<Environment>(() => {
     return {
-      apolloServerUri: 'apolloServerUriProvider',
+      apolloServerUri: 'http://127.0.0.1:3000/graphql',
       setApolloServerUriDebug,
     };
   }, [setApolloServerUriDebug]);
