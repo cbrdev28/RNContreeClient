@@ -6,8 +6,8 @@
 import 'react-native-gesture-handler';
 
 import React from 'react';
-import { MainAppCtl } from './MainApp/MainAppCtl';
+import { MainAppController } from './MainApp/MainAppController';
 
 export const Main = () => {
-  return <MainAppCtl />;
+  return <MainAppController />;
 };

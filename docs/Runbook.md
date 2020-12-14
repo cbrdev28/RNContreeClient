@@ -80,3 +80,43 @@ In the end, I realized I was trying to make this too complicated and have someth
 I will still follow those ideas, but we don't need the `enum AllRoutes` for example.
 I'm going to start with the debug screen and a bottom navigator with a simple implementation and we will see how it goes in the future.
 Also, I no longer want to add an extra `Controller` component in the hierarchy. We will start only with `Container`, and `Controller` will be used as "sub-container" (when needed), which cannot be navigated to.
+
+## Experimenting with Apollo Client
+
+We will use Apollo Client to make our GraphQL request:
+
+- https://www.apollographql.com/docs/react/integrations/react-native/
+- The first thing I want to try is to change the Apollo uri from the Debug screen
+  - This may help while debugging since I don't have a stable server
+  - And it will be a first playground to add a sort of text input modal in the Debug screen
+
+### Using React Context
+
+Before I add the Apollo Client, I would like to make sure I have a way to provide some environment data in the React Context.
+There is no obvious documentation about React Context, at least nothing I found very straightforward, so we will explore with code.
+
+Here is a train of thoughts:
+
+- Make a component to provide an environment object in the React Context
+  - This component will be loading data asynchronously
+  - It will be inside the `MainAppController`
+- Declare an `Environment` interface
+- Think about having an `AsyncStorageManager`, which would be inside the `MainAppController` for now
+
+### Adding Apollo Client
+
+By experimenting:
+
+- Add `"@apollo/client": "3.2.7"` in `package.json`
+  - Which REQUIRES: `"graphql": "15.4.0"` in `package.json`
+- Made my own provider component: `NetworkProvider`, for Apollo Client
+
+About our AsyncStorage wrapper:
+
+- I had to add another dependency:
+  - https://react-native-async-storage.github.io/async-storage/docs/install
+  - Requires to manually run: `pod install` in the `ios` folder
+
+### First query in Debug Screen
+
+I'm going to play around with Apollo and make a first query of the debug screen.

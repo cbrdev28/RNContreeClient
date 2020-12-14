@@ -5,27 +5,32 @@
  */
 
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { RootNavigationRoutes } from './RootNavigation.routes';
 import { RootNavigationScreens } from './RootNavigation.screens';
-import { BottomTabNavigatorParams } from './RootNavigation.types';
+import { RootModalStackNavigatorParams } from './RootNavigation.types';
 
 export const RootNavigationController = () => {
-  const BottomTabNavigator = createBottomTabNavigator<
-    BottomTabNavigatorParams
+  const RootModalStackNavigator = createStackNavigator<
+    RootModalStackNavigatorParams
   >();
+
   return (
-    <BottomTabNavigator.Navigator>
-      <BottomTabNavigator.Screen
-        name={RootNavigationRoutes.RNDemoApp}
-        component={RootNavigationScreens.RNDemoApp}
+    <RootModalStackNavigator.Navigator mode="modal">
+      <RootModalStackNavigator.Screen
+        name={RootNavigationRoutes.RootBottomNavigator}
+        component={RootNavigationScreens.RootBottomNavigator}
+        options={{ headerShown: false }}
       />
-      <BottomTabNavigator.Screen
-        name={RootNavigationRoutes.DebugScreen}
-        component={RootNavigationScreens.DebugScreen}
-        initialParams={{ testNavParam: 'Test param' }}
+      <RootModalStackNavigator.Screen
+        name={RootNavigationRoutes.TextInputModal}
+        component={RootNavigationScreens.TextInputModal}
+        options={{
+          headerShown: false,
+          cardStyle: { backgroundColor: 'transparent' },
+        }}
       />
-    </BottomTabNavigator.Navigator>
+    </RootModalStackNavigator.Navigator>
   );
 };
