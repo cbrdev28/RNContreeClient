@@ -16,7 +16,7 @@ import { HomeStackNavigatorParams } from './HomeStackNavigator.types';
 
 export const HomeStackNavigator = () => {
   const StackNavigator = createStackNavigator<HomeStackNavigatorParams>();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   return (
     <StackNavigator.Navigator>
       {isLoggedIn === true ? (

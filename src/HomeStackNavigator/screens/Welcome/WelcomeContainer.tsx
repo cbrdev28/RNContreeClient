@@ -3,7 +3,8 @@
  */
 
 import React from 'react';
+import { Welcome } from './Welcome';
 
 export const WelcomeContainer = () => {
-  return null;
+  return <Welcome />;
 };
