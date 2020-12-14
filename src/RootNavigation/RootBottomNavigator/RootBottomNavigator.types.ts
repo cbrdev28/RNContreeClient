@@ -27,9 +27,9 @@ interface DebugScreenNavParams {
  * This provides type checking for nav params.
  */
 export type BottomTabNavigatorParams = {
-  [RootBottomNavigatorRoutes.DebugScreen]: DebugScreenNavParams;
+  [RootBottomNavigatorRoutes.debugScreen]: DebugScreenNavParams;
   // The React Native demo app will not have any params
-  [RootBottomNavigatorRoutes.RNDemoApp]: undefined;
+  [RootBottomNavigatorRoutes.rnDemoApp]: undefined;
   [RootBottomNavigatorRoutes.home]: undefined;
 };
 
@@ -41,7 +41,7 @@ export type BottomTabNavigatorParams = {
  */
 type DebugScreenRouteProp = RouteProp<
   BottomTabNavigatorParams,
-  RootBottomNavigatorRoutes.DebugScreen
+  RootBottomNavigatorRoutes.debugScreen
 >;
 
 /**
@@ -57,7 +57,7 @@ type DebugScreenNavigationProp = CompositeNavigationProp<
   >,
   BottomTabNavigationProp<
     BottomTabNavigatorParams,
-    RootBottomNavigatorRoutes.DebugScreen
+    RootBottomNavigatorRoutes.debugScreen
   >
 >;
 

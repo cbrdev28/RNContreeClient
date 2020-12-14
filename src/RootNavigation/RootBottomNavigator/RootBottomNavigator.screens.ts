@@ -14,7 +14,7 @@ export const RootBottomNavigatorScreens: Record<
   RootBottomNavigatorRoutes,
   ComponentType<any>
 > = {
-  DebugScreen: DebugScreenContainer,
-  RNDemoApp: RNDemoApp,
+  debugScreen: DebugScreenContainer,
+  rnDemoApp: RNDemoApp,
   home: HomeStackNavigator,
 };

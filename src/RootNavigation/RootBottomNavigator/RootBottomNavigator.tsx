@@ -20,16 +20,16 @@ export const RootBottomNavigator = () => {
   return (
     <BottomTabNavigator.Navigator>
       <BottomTabNavigator.Screen
-        name={RootBottomNavigatorRoutes.RNDemoApp}
-        component={RootBottomNavigatorScreens.RNDemoApp}
+        name={RootBottomNavigatorRoutes.rnDemoApp}
+        component={RootBottomNavigatorScreens.rnDemoApp}
       />
       <BottomTabNavigator.Screen
         name={RootBottomNavigatorRoutes.home}
         component={RootBottomNavigatorScreens.home}
       />
       <BottomTabNavigator.Screen
-        name={RootBottomNavigatorRoutes.DebugScreen}
-        component={RootBottomNavigatorScreens.DebugScreen}
+        name={RootBottomNavigatorRoutes.debugScreen}
+        component={RootBottomNavigatorScreens.debugScreen}
         initialParams={{ testNavParam: 'Test param' }}
       />
     </BottomTabNavigator.Navigator>
