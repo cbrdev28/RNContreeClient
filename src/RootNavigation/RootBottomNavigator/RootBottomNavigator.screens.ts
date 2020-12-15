@@ -5,7 +5,7 @@
 
 import { ComponentType } from 'react';
 
-import RNDemoApp from '../../RNDemoApp/RNDemoApp';
+import RNDemoApp from '../../components/RNDemoApp/RNDemoApp';
 import { DebugScreenContainer } from '../../components/DebugScreen/DebugScreenContainer';
 import { RootBottomNavigatorRoutes } from './RootBottomNavigator.routes';
 import { HomeStackNavigator } from '../../HomeStackNavigator/HomeStackNavigator';
