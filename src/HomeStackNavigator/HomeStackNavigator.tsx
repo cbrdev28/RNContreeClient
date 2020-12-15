@@ -23,6 +23,7 @@ export const HomeStackNavigator = () => {
         <StackNavigator.Screen
           name={HomeStackNavigatorRoutes.welcome}
           component={HomeStackNavigatorScreens.welcome}
+          options={{ title: 'WelcomeStack' }}
         />
       ) : (
         <StackNavigator.Screen

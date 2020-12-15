@@ -26,6 +26,7 @@ export const RootBottomNavigator = () => {
       <BottomTabNavigator.Screen
         name={RootBottomNavigatorRoutes.home}
         component={RootBottomNavigatorScreens.home}
+        options={{ title: 'WelcomeTab' }}
       />
       <BottomTabNavigator.Screen
         name={RootBottomNavigatorRoutes.debugScreen}
