@@ -7,7 +7,7 @@
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Environment } from '../../Environment/Environment';
-import { FullScreenLoadingIndicator } from '../../FullScreenLoadingIndicator/FullScreenLoadingIndicator';
+import { FullScreenLoadingIndicator } from '../../components/FullScreenLoadingIndicator/FullScreenLoadingIndicator';
 import { LocalStorage } from '../../LocalStorage/LocalStorage';
 import { EnvironmentContext } from './EnvironmentContext';
 
