@@ -7,6 +7,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+
+import { Messages } from '../../resources/messages';
 import { LabelValueText } from './LabelValueText';
 
 export interface DebugScreenProps {
@@ -24,23 +26,41 @@ export interface DebugScreenProps {
 export const DebugScreen = (props: DebugScreenProps) => {
   return (
     <View style={styles.container}>
-      <LabelValueText label={'Hello'} value={'Debug'} />
-      <LabelValueText label={'Test nav param'} value={props.testNavParam} />
-      <LabelValueText label={'URI'} value={props.apolloServerUriFromContext} />
       <LabelValueText
-        label={'Debug URI'}
+        label={Messages.debugHelloLabel}
+        value={Messages.debugHelloValue}
+      />
+      <LabelValueText
+        label={Messages.debugTestNavParamLabel}
+        value={props.testNavParam}
+      />
+      <LabelValueText
+        label={Messages.debugUriLabel}
+        value={props.apolloServerUriFromContext}
+      />
+      <LabelValueText
+        label={Messages.debugUriDebugLabel}
         value={props.apolloServerUriDebugFromContext || ''}
       />
       <TouchableOpacity onPress={props.showModal}>
-        <LabelValueText label={'Edit Debug URI'} value={''} />
+        <LabelValueText label={Messages.debugEditUriDebugButton} value={''} />
       </TouchableOpacity>
-      <LabelValueText label={'User token'} value={props.userToken || ''} />
       <LabelValueText
-        label={'User id'}
+        label={Messages.debugUserTokenLabel}
+        value={props.userToken || ''}
+      />
+      <LabelValueText
+        label={Messages.debugUserIdLabel}
         value={props.userId?.toString() || ''}
       />
-      <LabelValueText label={'User name'} value={props.userName || ''} />
-      <LabelValueText label={'User email'} value={props.userEmail || ''} />
+      <LabelValueText
+        label={Messages.debugUserNameLabel}
+        value={props.userName || ''}
+      />
+      <LabelValueText
+        label={Messages.debugUserEmailLabel}
+        value={props.userEmail || ''}
+      />
     </View>
   );
 };
