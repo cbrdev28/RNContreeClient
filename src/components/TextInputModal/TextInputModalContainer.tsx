@@ -3,8 +3,8 @@
  */
 
 import React, { useCallback } from 'react';
-import { useEnvironmentContext } from '../MainApp/EnvironmentContext/EnvironmentContextProvider';
-import { TextInputModalNavRouteProp } from '../RootNavigation/RootNavigation.types';
+import { useEnvironmentContext } from '../../MainApp/EnvironmentContext/EnvironmentContextProvider';
+import { TextInputModalNavRouteProp } from '../../RootNavigation/RootNavigation.types';
 import { TextInputModal } from './TextInputModal';
 
 export const TextInputModalContainer = ({
