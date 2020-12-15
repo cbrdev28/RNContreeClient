@@ -14,4 +14,9 @@ export namespace Messages {
   export const debugUserIdLabel = 'User ID';
   export const debugUserNameLabel = 'User name';
   export const debugUserEmailLabel = 'User email';
+
+  // Strings for the text input modal
+  export const textInputModalTitle = 'Enter server URI:';
+  export const textInputModalSubmitButton = 'Submit';
+  export const textInputModalDismissButton = 'Dismiss';
 }

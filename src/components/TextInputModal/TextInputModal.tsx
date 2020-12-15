@@ -7,6 +7,7 @@
 import React, { useCallback, useState } from 'react';
 import { Keyboard, StyleSheet, Text, View, TextInput } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Messages } from '../../resources/messages';
 
 interface TextInputModalProps {
   onDismiss: () => void;
@@ -34,7 +35,7 @@ export const TextInputModal = (props: TextInputModalProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.title}>Enter server URI:</Text>
+        <Text style={styles.title}>{Messages.textInputModalTitle}</Text>
         <TextInput
           style={styles.textInput}
           value={inputText}
@@ -51,10 +52,14 @@ export const TextInputModal = (props: TextInputModalProps) => {
           <TouchableOpacity
             style={[styles.button, styles.submitButton]}
             onPress={onSubmitText}>
-            <Text style={[styles.buttonText, styles.submitText]}>Submit</Text>
+            <Text style={[styles.buttonText, styles.submitText]}>
+              {Messages.textInputModalSubmitButton}
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={onDismissModal}>
-            <Text style={styles.buttonText}>Dismiss</Text>
+            <Text style={styles.buttonText}>
+              {Messages.textInputModalDismissButton}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
