@@ -31,7 +31,7 @@ export const RootBottomNavigator = () => {
       <BottomTabNavigator.Screen
         name={RootBottomNavigatorRoutes.debugScreen}
         component={RootBottomNavigatorScreens.debugScreen}
-        initialParams={{ testNavParam: 'Test param' }}
+        initialParams={{ testNavParam: 'Initial param' }}
       />
     </BottomTabNavigator.Navigator>
   );

@@ -25,7 +25,7 @@ export const RootNavigationController = () => {
       />
       <RootModalStackNavigator.Screen
         name={RootNavigationRoutes.textInputModal}
-        component={RootNavigationScreens.rootBottomNavigator}
+        component={RootNavigationScreens.textInputModal}
         options={{
           headerShown: false,
           cardStyle: { backgroundColor: 'transparent' },
