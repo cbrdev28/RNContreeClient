@@ -5,9 +5,9 @@
 import React, { useCallback } from 'react';
 import { gql, useQuery } from '@apollo/client';
 
-import { useEnvironmentContext } from '../MainApp/EnvironmentContext/EnvironmentContextProvider';
-import { DebugScreenNavRouteProp } from '../RootNavigation/RootBottomNavigator/RootBottomNavigator.types';
-import { RootNavigationRoutes } from '../RootNavigation/RootNavigation.routes';
+import { useEnvironmentContext } from '../../MainApp/EnvironmentContext/EnvironmentContextProvider';
+import { DebugScreenNavRouteProp } from '../../RootNavigation/RootBottomNavigator/RootBottomNavigator.types';
+import { RootNavigationRoutes } from '../../RootNavigation/RootNavigation.routes';
 import { DebugScreen } from './DebugScreen';
 
 interface DebugUserData {
