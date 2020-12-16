@@ -8,6 +8,7 @@ import React, { useCallback, useState } from 'react';
 import { Keyboard, StyleSheet, Text, View, TextInput } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Messages } from '../../resources/messages';
+import { Spacing } from '../../styling/spacing';
 
 interface TextInputModalProps {
   onDismiss: () => void;
@@ -71,10 +72,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: 32,
+    paddingHorizontal: Spacing.largeInset,
   },
   content: {
-    padding: 16,
+    padding: Spacing.contentInset,
     backgroundColor: 'white',
     shadowColor: 'gray',
     shadowOffset: {
@@ -87,24 +88,24 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    marginBottom: 4,
+    marginBottom: Spacing.verticalSpacing,
   },
   textInput: {
     borderColor: 'blue',
-    borderWidth: 1,
-    borderRadius: 4,
-    padding: 8,
-    marginBottom: 4,
+    borderWidth: Spacing.borderWidth,
+    borderRadius: Spacing.borderRadius,
+    padding: Spacing.inset,
+    marginBottom: Spacing.verticalSpacing,
   },
   buttons: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   button: {
-    borderWidth: 1,
-    borderRadius: 4,
-    paddingVertical: 8,
-    paddingHorizontal: 32,
+    borderWidth: Spacing.borderWidth,
+    borderRadius: Spacing.borderRadius,
+    paddingVertical: Spacing.verticalSpacing,
+    paddingHorizontal: Spacing.largeInset,
   },
   submitButton: {
     borderColor: 'green',
