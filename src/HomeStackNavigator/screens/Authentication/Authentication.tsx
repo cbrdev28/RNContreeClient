@@ -10,7 +10,11 @@ import { FontSize } from '../../../styling/fonts';
 import { Spacing } from '../../../styling/spacing';
 import { Styling } from '../../../styling/styling';
 
-export const Authentication = () => {
+interface AuthenticationProps {
+  didTapCreateUser: () => void;
+}
+
+export const Authentication = (props: AuthenticationProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -48,7 +52,7 @@ export const Authentication = () => {
       <Button
         title={Messages.authSignUpButtonTitle}
         disabled={!name || !email || !password}
-        onPress={() => {}}
+        onPress={props.didTapCreateUser}
       />
     </View>
   );
