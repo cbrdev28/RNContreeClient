@@ -2,7 +2,7 @@
  * The view component for Authentication
  */
 
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { Messages } from '../../../resources/messages';
 import { Color } from '../../../styling/colors';
@@ -10,14 +10,26 @@ import { FontSize } from '../../../styling/fonts';
 import { Spacing } from '../../../styling/spacing';
 import { Styling } from '../../../styling/styling';
 
+interface CreateUserCallbackParams {
+  email: string;
+  password: string;
+  name: string;
+}
+
 interface AuthenticationProps {
-  didTapCreateUser: () => void;
+  didTapCreateUser: (params: CreateUserCallbackParams) => Promise<void>;
 }
 
 export const Authentication = (props: AuthenticationProps) => {
+  const { didTapCreateUser } = props;
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+
+  const didTapSignUp = useCallback(() => {
+    didTapCreateUser({ email, password, name });
+  }, [didTapCreateUser, email, password, name]);
 
   return (
     <View style={styles.container}>
@@ -52,7 +64,7 @@ export const Authentication = (props: AuthenticationProps) => {
       <Button
         title={Messages.authSignUpButtonTitle}
         disabled={!name || !email || !password}
-        onPress={props.didTapCreateUser}
+        onPress={didTapSignUp}
       />
     </View>
   );

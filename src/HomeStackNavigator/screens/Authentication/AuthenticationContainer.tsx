@@ -18,21 +18,20 @@ export const AuthenticationContainer = () => {
     CreateUserMutationParams
   >(gqlCreateUserMutation);
 
-  const didTapCreateUser = useCallback(async () => {
-    console.warn('Calling');
-    const response = await createUser({
-      variables: {
-        input: {
-          name: 'Hardcoded',
-          credentials: { email: 'Hard2@coded.com', password: 'HARDCODED' },
+  const didTapCreateUser = useCallback(
+    async ({ email, password, name }) => {
+      // TODO: add try catch and handle error
+      await createUser({
+        variables: {
+          input: {
+            name,
+            credentials: { email, password },
+          },
         },
-      },
-    });
-    console.warn(
-      'Response data: ',
-      JSON.stringify(response?.data?.createUser?.user),
-    );
-  }, [createUser]);
+      });
+    },
+    [createUser],
+  );
 
   return <Authentication didTapCreateUser={didTapCreateUser} />;
 };
