@@ -17,7 +17,7 @@ import { Messages } from '../resources/messages';
 
 export const HomeStackNavigator = () => {
   const StackNavigator = createStackNavigator<HomeStackNavigatorParams>();
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <StackNavigator.Navigator>
       {isLoggedIn === true ? (

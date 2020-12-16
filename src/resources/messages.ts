@@ -26,4 +26,7 @@ export namespace Messages {
   // Stack navigator top bar title
   export const welcomeTopBarTitle = 'Welcome';
   export const authenticationTopBarTitle = 'Authentication';
+
+  // Authentication screen
+  export const authenticationHeader = 'Please login or sign up';
 }

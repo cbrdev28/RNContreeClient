@@ -84,14 +84,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: FontSize.header,
-    marginBottom: Spacing.verticalSpacing,
+    marginBottom: Spacing.verticalContentInset,
   },
   textInput: {
     borderColor: Color.inputColor,
     borderWidth: Styling.borderWidth,
     borderRadius: Styling.borderRadius,
     padding: Spacing.inset,
-    marginBottom: Spacing.verticalSpacing,
+    marginBottom: Spacing.verticalContentInset,
   },
   buttons: {
     flexDirection: 'row',
