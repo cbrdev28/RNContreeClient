@@ -8,7 +8,10 @@ import React, { useCallback, useState } from 'react';
 import { Keyboard, StyleSheet, Text, View, TextInput } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Messages } from '../../resources/messages';
+import { Color } from '../../styling/colors';
+import { FontSize } from '../../styling/fonts';
 import { Spacing } from '../../styling/spacing';
+import { Styling } from '../../styling/styling';
 
 interface TextInputModalProps {
   onDismiss: () => void;
@@ -76,24 +79,17 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: Spacing.contentInset,
-    backgroundColor: 'white',
-    shadowColor: 'gray',
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.5,
-    shadowRadius: 8,
-    elevation: 4,
+    backgroundColor: Color.modalBackground,
+    ...Styling.modalShadow,
   },
   title: {
-    fontSize: 18,
+    fontSize: FontSize.header,
     marginBottom: Spacing.verticalSpacing,
   },
   textInput: {
-    borderColor: 'blue',
-    borderWidth: Spacing.borderWidth,
-    borderRadius: Spacing.borderRadius,
+    borderColor: Color.inputColor,
+    borderWidth: Styling.borderWidth,
+    borderRadius: Styling.borderRadius,
     padding: Spacing.inset,
     marginBottom: Spacing.verticalSpacing,
   },
@@ -102,18 +98,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   button: {
-    borderWidth: Spacing.borderWidth,
-    borderRadius: Spacing.borderRadius,
+    borderWidth: Styling.borderWidth,
+    borderRadius: Styling.borderRadius,
     paddingVertical: Spacing.verticalSpacing,
     paddingHorizontal: Spacing.largeInset,
   },
   submitButton: {
-    borderColor: 'green',
+    borderColor: Color.activeColor,
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: FontSize.button,
   },
   submitText: {
-    color: 'green',
+    color: Color.activeColor,
   },
 });

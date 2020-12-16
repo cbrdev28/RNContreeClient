@@ -7,7 +7,4 @@ export namespace Spacing {
   export const contentInset = 16;
   export const inset = 8;
   export const verticalSpacing = 4;
-
-  export const borderRadius = 4;
-  export const borderWidth = 1;
 }
