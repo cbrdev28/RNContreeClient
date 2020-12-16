@@ -9,7 +9,7 @@ export namespace Messages {
   export const debugTestNavParamLabel = 'Test nav param';
   export const debugUriLabel = 'URI';
   export const debugUriDebugLabel = 'Debug URI';
-  export const debugEditUriDebugButton = 'Edit debug URI';
+  export const debugEditUriDebugButton = 'EDIT debug URI';
   export const debugUserTokenLabel = 'User token';
   export const debugUserIdLabel = 'User ID';
   export const debugUserNameLabel = 'User name';
@@ -29,4 +29,9 @@ export namespace Messages {
 
   // Authentication screen
   export const authenticationHeader = 'Please login or sign up';
+  export const authenticationNameLabel = 'Name:';
+  export const authenticationEmailLabel = 'Email:';
+  export const authenticationPasswordLabel = 'Password:';
+  export const authLoginButtonTitle = 'Login';
+  export const authSignUpButtonTitle = 'Sign up';
 }
