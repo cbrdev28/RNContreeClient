@@ -13,6 +13,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { HomeStackNavigatorRoutes } from './HomeStackNavigator.routes';
 import { HomeStackNavigatorScreens } from './HomeStackNavigator.screens';
 import { HomeStackNavigatorParams } from './HomeStackNavigator.types';
+import { Messages } from '../resources/messages';
 
 export const HomeStackNavigator = () => {
   const StackNavigator = createStackNavigator<HomeStackNavigatorParams>();
@@ -23,12 +24,13 @@ export const HomeStackNavigator = () => {
         <StackNavigator.Screen
           name={HomeStackNavigatorRoutes.welcome}
           component={HomeStackNavigatorScreens.welcome}
-          options={{ title: 'WelcomeStack' }}
+          options={{ title: Messages.welcomeTopBarTitle }}
         />
       ) : (
         <StackNavigator.Screen
           name={HomeStackNavigatorRoutes.authentication}
           component={HomeStackNavigatorScreens.authentication}
+          options={{ title: Messages.authenticationTopBarTitle }}
         />
       )}
     </StackNavigator.Navigator>

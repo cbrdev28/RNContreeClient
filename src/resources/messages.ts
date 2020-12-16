@@ -19,4 +19,11 @@ export namespace Messages {
   export const textInputModalTitle = 'Enter server URI:';
   export const textInputModalSubmitButton = 'Submit';
   export const textInputModalDismissButton = 'Dismiss';
+
+  // Bottom bar button title
+  export const homeBottomBarButtonTitle = 'Home';
+
+  // Stack navigator top bar title
+  export const welcomeTopBarTitle = 'Welcome';
+  export const authenticationTopBarTitle = 'Authentication';
 }
