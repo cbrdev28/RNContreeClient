@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   button: {
     borderWidth: Styling.borderWidth,
     borderRadius: Styling.borderRadius,
-    paddingVertical: Spacing.verticalSpacing,
+    paddingVertical: Spacing.inset,
     paddingHorizontal: Spacing.largeInset,
   },
   submitButton: {
