@@ -10,21 +10,31 @@ import { FontSize } from '../../../styling/fonts';
 import { Spacing } from '../../../styling/spacing';
 import { Styling } from '../../../styling/styling';
 
-interface CreateUserCallbackParams {
+export interface CreateUserCallbackParams {
   email: string;
   password: string;
   name: string;
 }
 
+export interface SignInUserCallbackParams {
+  email: string;
+  password: string;
+}
+
 interface AuthenticationProps {
   didTapCreateUser: (params: CreateUserCallbackParams) => Promise<void>;
   createUserError?: string;
-
+  didTapSignInUser: (params: SignInUserCallbackParams) => Promise<void>;
   signInUserError?: string;
 }
 
 export const Authentication = (props: AuthenticationProps) => {
-  const { didTapCreateUser, createUserError, signInUserError } = props;
+  const {
+    didTapCreateUser,
+    createUserError,
+    didTapSignInUser,
+    signInUserError,
+  } = props;
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -33,6 +43,10 @@ export const Authentication = (props: AuthenticationProps) => {
   const didTapSignUp = useCallback(() => {
     didTapCreateUser({ email, password, name });
   }, [didTapCreateUser, email, password, name]);
+
+  const didTapLogin = useCallback(() => {
+    didTapSignInUser({ email, password });
+  }, [didTapSignInUser, email, password]);
 
   return (
     <View style={styles.container}>
@@ -58,7 +72,7 @@ export const Authentication = (props: AuthenticationProps) => {
       <Button
         title={Messages.authLoginButtonTitle}
         disabled={!email || !password}
-        onPress={() => {}}
+        onPress={didTapLogin}
       />
       <Text
         style={

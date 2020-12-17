@@ -16,7 +16,11 @@ import {
   SignInUserMutationParams,
   SignInUserMutationResponse,
 } from '../../../Network/mutations/signInUserMutation';
-import { Authentication } from './Authentication';
+import {
+  Authentication,
+  CreateUserCallbackParams,
+  SignInUserCallbackParams,
+} from './Authentication';
 
 export const AuthenticationContainer = () => {
   const [createUserError, setCreateUserError] = useState('');
@@ -31,8 +35,55 @@ export const AuthenticationContainer = () => {
     SignInUserMutationParams
   >(gqlSignInUserMutation);
 
+  const didTapSignInUser = useCallback(
+    async ({ email, password }: SignInUserCallbackParams) => {
+      // Clear any errors
+      setSignInUserError('');
+
+      let signInUserResponse = null;
+      try {
+        signInUserResponse = await signInUser({
+          variables: {
+            input: {
+              credentials: {
+                email: email,
+                password: password,
+              },
+            },
+          },
+        });
+      } catch (_error) {
+        setSignInUserError(Messages.authError);
+        return;
+      }
+
+      const authToken = signInUserResponse?.data?.signInUser?.token;
+      const signedInUser = signInUserResponse?.data?.signInUser?.user;
+      if (!authToken || !signedInUser) {
+        setSignInUserError(Messages.authError);
+        return;
+      }
+
+      // Set user and auth token in context
+      setSignInUserError(
+        'Token: ' +
+          authToken +
+          '\nUser: ' +
+          signedInUser.email +
+          ' / ' +
+          signedInUser.name,
+      );
+      return;
+    },
+    [setSignInUserError, signInUser],
+  );
+
   const didTapCreateUser = useCallback(
-    async ({ email, password, name }) => {
+    async ({ email, password, name }: CreateUserCallbackParams) => {
+      // Clear any errors
+      setCreateUserError('');
+      setSignInUserError('');
+
       let createUserResponse = null;
       try {
         createUserResponse = await createUser({
@@ -54,44 +105,17 @@ export const AuthenticationContainer = () => {
         return;
       }
 
-      // Sign in user
-      let signInUserResponse = null;
-      try {
-        signInUserResponse = await signInUser({
-          variables: {
-            input: {
-              credentials: {
-                email: createdUser.email,
-                password: password,
-              },
-            },
-          },
-        });
-      } catch (_error) {
-        setSignInUserError(Messages.authError);
-        return;
-      }
-
-      const authToken = signInUserResponse?.data?.signInUser?.token;
-      const signedInUser = signInUserResponse?.data?.signInUser?.user;
-      if (!authToken || !signedInUser) {
-        setSignInUserError(Messages.authError);
-        return;
-      }
-
-      // Set user and auth token in context
-      setCreateUserError('Token: ' + authToken);
-      setSignInUserError(
-        'User: ' + signedInUser.email + ' / ' + signedInUser.name,
-      );
+      await didTapSignInUser({ email: createdUser.email, password });
+      return;
     },
-    [createUser, setCreateUserError, signInUser, setSignInUserError],
+    [createUser, setCreateUserError, setSignInUserError, didTapSignInUser],
   );
 
   return (
     <Authentication
       didTapCreateUser={didTapCreateUser}
       createUserError={createUserError}
+      didTapSignInUser={didTapSignInUser}
       signInUserError={signInUserError}
     />
   );
