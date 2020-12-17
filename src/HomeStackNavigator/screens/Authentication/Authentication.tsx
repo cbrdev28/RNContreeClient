@@ -19,10 +19,12 @@ interface CreateUserCallbackParams {
 interface AuthenticationProps {
   didTapCreateUser: (params: CreateUserCallbackParams) => Promise<void>;
   createUserError?: string;
+
+  signInUserError?: string;
 }
 
 export const Authentication = (props: AuthenticationProps) => {
-  const { didTapCreateUser, createUserError } = props;
+  const { didTapCreateUser, createUserError, signInUserError } = props;
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -58,6 +60,14 @@ export const Authentication = (props: AuthenticationProps) => {
         disabled={!email || !password}
         onPress={() => {}}
       />
+      <Text
+        style={
+          (signInUserError && [styles.errorPlaceholder, styles.error]) || [
+            styles.errorPlaceholder,
+          ]
+        }>
+        {signInUserError}
+      </Text>
 
       <Text style={styles.inputLabel}>{Messages.authenticationNameLabel}</Text>
       <TextInput style={styles.inputText} onChangeText={setName} />
