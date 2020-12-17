@@ -7,20 +7,21 @@
  * - Welcome once logged in
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { HomeStackNavigatorRoutes } from './HomeStackNavigator.routes';
 import { HomeStackNavigatorScreens } from './HomeStackNavigator.screens';
 import { HomeStackNavigatorParams } from './HomeStackNavigator.types';
 import { Messages } from '../resources/messages';
+import { useEnvironmentContext } from '../MainApp/EnvironmentContext/EnvironmentContextProvider';
 
 export const HomeStackNavigator = () => {
   const StackNavigator = createStackNavigator<HomeStackNavigatorParams>();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const env = useEnvironmentContext();
   return (
     <StackNavigator.Navigator>
-      {isLoggedIn === true ? (
+      {env?.currentUser != null ? (
         <StackNavigator.Screen
           name={HomeStackNavigatorRoutes.welcome}
           component={HomeStackNavigatorScreens.welcome}

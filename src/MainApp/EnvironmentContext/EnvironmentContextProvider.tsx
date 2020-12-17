@@ -47,6 +47,7 @@ export const EnvironmentContextProvider = (props: {
     return {
       apolloServerUri: 'http://127.0.0.1:3000/graphql',
       setApolloServerUriDebug,
+      currentUser: null,
     };
   }, [setApolloServerUriDebug]);
 
