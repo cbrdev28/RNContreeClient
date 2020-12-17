@@ -13,6 +13,8 @@ export interface Environment {
   // The authentication token, used in the headers and for recovery session query
   // This will also be saved in the local storage
   authToken: string | null;
+  // Updates the current user and the auth token when signing in
+  setCurrentUserSession: (user: User, token: string) => Promise<void>;
 
   // A debug server uri for apollo, which will be used
   // instead of the default, if set

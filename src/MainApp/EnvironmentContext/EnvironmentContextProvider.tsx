@@ -10,6 +10,7 @@ import { Environment } from '../../Environment/Environment';
 import { FullScreenLoadingIndicator } from '../../components/FullScreenLoadingIndicator/FullScreenLoadingIndicator';
 import { LocalStorage } from '../../LocalStorage/LocalStorage';
 import { EnvironmentContext } from './EnvironmentContext';
+import { User } from '../../Network/schema.types.ts/User';
 
 interface LocalStorageEnvironmentData {
   apolloServerUri?: string | null;
@@ -42,15 +43,27 @@ export const EnvironmentContextProvider = (props: {
     setDebugUri(apolloUri);
   }, []);
 
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [authToken, setAuthToken] = useState<string | null>(null);
+  const setCurrentUserSession = useCallback(
+    async (user: User, token: string) => {
+      // TODO: store authToken in local storage
+      setCurrentUser(user);
+      setAuthToken(token);
+    },
+    [setCurrentUser, setAuthToken],
+  );
+
   // Our default Environment object with static values
   const defaultEnvContext = useMemo<Environment>(() => {
     return {
       apolloServerUri: 'http://127.0.0.1:3000/graphql',
       setApolloServerUriDebug,
-      currentUser: null,
-      authToken: null,
+      currentUser: currentUser,
+      authToken: authToken,
+      setCurrentUserSession,
     };
-  }, [setApolloServerUriDebug]);
+  }, [setApolloServerUriDebug, currentUser, authToken, setCurrentUserSession]);
 
   // Update Environment with values from local storage
   const envContext = useMemo<Environment>(() => {

@@ -10,6 +10,7 @@ const defaultContext: Environment = {
   setApolloServerUriDebug: async (_uri: string) => {},
   currentUser: null,
   authToken: null,
+  setCurrentUserSession: async () => {},
 };
 
 export const EnvironmentContext = React.createContext<Environment>(
