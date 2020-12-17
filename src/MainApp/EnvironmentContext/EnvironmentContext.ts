@@ -9,6 +9,7 @@ const defaultContext: Environment = {
   apolloServerUri: 'defaultApolloServerUri',
   setApolloServerUriDebug: async (_uri: string) => {},
   currentUser: null,
+  authToken: null,
 };
 
 export const EnvironmentContext = React.createContext<Environment>(
