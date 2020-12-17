@@ -47,7 +47,7 @@ export const EnvironmentContextProvider = (props: {
   const [authToken, setAuthToken] = useState<string | null>(null);
   const setCurrentUserSession = useCallback(
     async (user: User, token: string) => {
-      // TODO: store authToken in local storage
+      // TODO: store authToken in local storage when implementing recover query
       setCurrentUser(user);
       setAuthToken(token);
     },

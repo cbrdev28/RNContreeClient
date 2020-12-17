@@ -54,7 +54,7 @@ export const DebugScreenContainer = ({
     DebugRecoverSessionResponse,
     DebugRecoverSessionParams
   >(gqlQuery, {
-    variables: { authToken: 'tzlyp:2' },
+    variables: { authToken: envContext?.authToken || '' },
   });
   if (error) {
     console.error('Error: ', error);

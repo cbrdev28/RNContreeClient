@@ -21,8 +21,10 @@ import {
   CreateUserCallbackParams,
   SignInUserCallbackParams,
 } from './Authentication';
+import { useEnvironmentContext } from '../../../MainApp/EnvironmentContext/EnvironmentContextProvider';
 
 export const AuthenticationContainer = () => {
+  const envContext = useEnvironmentContext();
   const [createUserError, setCreateUserError] = useState('');
   const [createUser] = useMutation<
     CreateUserMutationResponse,
@@ -64,18 +66,12 @@ export const AuthenticationContainer = () => {
         return;
       }
 
-      // Set user and auth token in context
-      setSignInUserError(
-        'Token: ' +
-          authToken +
-          '\nUser: ' +
-          signedInUser.email +
-          ' / ' +
-          signedInUser.name,
-      );
+      // This will update the React Context and re-render the home
+      // navigation, to show the welcome screen instead of authentication
+      await envContext.setCurrentUserSession(signedInUser, authToken);
       return;
     },
-    [setSignInUserError, signInUser],
+    [setSignInUserError, signInUser, envContext],
   );
 
   const didTapCreateUser = useCallback(
