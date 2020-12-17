@@ -14,6 +14,7 @@ import { User } from '../../Network/schema.types.ts/User';
 
 interface LocalStorageEnvironmentData {
   apolloServerUri?: string | null;
+  authToken?: string | null;
 }
 
 export const EnvironmentContextProvider = (props: {
@@ -30,7 +31,13 @@ export const EnvironmentContextProvider = (props: {
       const localStorageApolloServerUri = await LocalStorage.get(
         LocalStorage.Keys.apolloServerUri,
       );
-      setLocalStorageEnv({ apolloServerUri: localStorageApolloServerUri });
+      const localStorageToken = await LocalStorage.get(
+        LocalStorage.Keys.authToken,
+      );
+      setLocalStorageEnv({
+        apolloServerUri: localStorageApolloServerUri,
+        authToken: localStorageToken,
+      });
       setLoading(false);
     };
 
@@ -47,7 +54,7 @@ export const EnvironmentContextProvider = (props: {
   const [authToken, setAuthToken] = useState<string | null>(null);
   const setCurrentUserSession = useCallback(
     async (user: User, token: string) => {
-      // TODO: store authToken in local storage when implementing recover query
+      await LocalStorage.set(LocalStorage.Keys.authToken, token);
       setCurrentUser(user);
       setAuthToken(token);
     },
@@ -60,7 +67,7 @@ export const EnvironmentContextProvider = (props: {
       apolloServerUri: 'http://127.0.0.1:3000/graphql',
       setApolloServerUriDebug,
       currentUser: currentUser,
-      authToken: authToken,
+      authToken: authToken || localStorageEnv?.authToken || null,
       setCurrentUserSession,
       apolloServerUriDebug:
         debugUri || localStorageEnv?.apolloServerUri || null,

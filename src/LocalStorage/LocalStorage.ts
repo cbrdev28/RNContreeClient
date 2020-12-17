@@ -12,6 +12,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export namespace LocalStorage {
   export enum Keys {
     apolloServerUri = 'apolloServerUri',
+    authToken = 'authToken',
   }
 
   export async function set(key: Keys, value: string) {
