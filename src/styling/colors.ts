@@ -10,7 +10,7 @@ export namespace Color {
 
   // TODO: refactor to remove "Color" suffix
   export const input = 'blue';
-  export const activeColor = 'green';
+  export const active = 'green';
 
   export const error = 'red';
   export const nothing = 'transparent';

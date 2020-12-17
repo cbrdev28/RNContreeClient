@@ -104,12 +104,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.largeInset,
   },
   submitButton: {
-    borderColor: Color.activeColor,
+    borderColor: Color.active,
   },
   buttonText: {
     fontSize: FontSize.button,
   },
   submitText: {
-    color: Color.activeColor,
+    color: Color.active,
   },
 });
