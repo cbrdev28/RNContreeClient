@@ -8,16 +8,23 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { useEnvironmentContext } from '../MainApp/EnvironmentContext/EnvironmentContextProvider';
 import { qglUserDefs } from './schema.types.ts/User';
 import { gqlCredentialsInputDefs } from './schema.types.ts/CredentialsInput';
-import { gqlCreateUserMutationDefs } from './mutations/createUserMutation';
+import {
+  gqlCreateUserInputDefs,
+  gqlCreateUserMutationDefs,
+  gqlCreateUserPayloadDefs,
+} from './mutations/createUserMutation';
 
 export const NetworkProvider = (props: { children: React.ReactNode }) => {
   const envContext = useEnvironmentContext();
 
   const allSchemaDefs = useMemo(() => {
     return [
+      // Common type
       qglUserDefs,
       gqlCredentialsInputDefs,
-      gqlCredentialsInputDefs,
+      // Create User
+      gqlCreateUserInputDefs,
+      gqlCreateUserPayloadDefs,
       gqlCreateUserMutationDefs,
     ];
   }, []);

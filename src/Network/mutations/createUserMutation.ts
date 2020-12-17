@@ -6,30 +6,20 @@ import { gql } from '@apollo/client';
 import { CredentialsInput } from '../schema.types.ts/CredentialsInput';
 import { User } from '../schema.types.ts/User';
 
-export interface CreateUserInput {
-  name: string;
-  credentials: CredentialsInput;
-}
-
 export const gqlCreateUserInputDefs = gql`
   input CreateUserInput {
     name: String!
     credentials: CredentialsInput!
   }
 `;
-
-export interface CreateUserMutationParams {
-  input: CreateUserInput;
-}
-export interface CreateUserMutationResponse {
-  createUser: {
-    user: User;
-  };
-}
-
+export const gqlCreateUserPayloadDefs = gql`
+  type CreateUserPayload {
+    user: User!
+  }
+`;
 export const gqlCreateUserMutationDefs = gql`
-  type Query {
-    createUser(input: CreateUserInput!): User!
+  type Mutation {
+    createUser(input: CreateUserInput!): CreateUserPayload!
   }
 `;
 
@@ -44,3 +34,17 @@ export const gqlCreateUserMutation = gql`
     }
   }
 `;
+
+interface CreateUserInput {
+  name: string;
+  credentials: CredentialsInput;
+}
+interface CreateUserPayload {
+  user: User;
+}
+export interface CreateUserMutationParams {
+  input: CreateUserInput;
+}
+export interface CreateUserMutationResponse {
+  createUser: CreateUserPayload;
+}
