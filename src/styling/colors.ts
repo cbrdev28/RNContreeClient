@@ -9,7 +9,7 @@ export namespace Color {
   export const modalBackground = 'white';
 
   // TODO: refactor to remove "Color" suffix
-  export const inputColor = 'blue';
+  export const input = 'blue';
   export const activeColor = 'green';
 
   export const error = 'red';

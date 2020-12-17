@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     marginBottom: Spacing.verticalStack,
   },
   inputText: {
-    borderColor: Color.inputColor,
+    borderColor: Color.input,
     borderWidth: Styling.borderWidth,
     borderRadius: Styling.borderRadius,
     padding: Spacing.inset,
