@@ -15,6 +15,8 @@ export interface Environment {
   authToken: string | null;
   // Updates the current user and the auth token when signing in
   setCurrentUserSession: (user: User, token: string) => Promise<void>;
+  // Erase authentication data (currentUser and authToken to null) when logging out
+  resetCurrentUserSession: () => Promise<void>;
 
   // A debug server uri for apollo, which will be used
   // instead of the default, if set

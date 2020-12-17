@@ -60,6 +60,11 @@ export const EnvironmentContextProvider = (props: {
     },
     [setCurrentUser, setAuthToken],
   );
+  const resetCurrentUserSession = useCallback(async () => {
+    await LocalStorage.remove(LocalStorage.Keys.authToken);
+    setCurrentUser(null);
+    setAuthToken(null);
+  }, [setCurrentUser, setAuthToken]);
 
   // Build our Environment object for the React
   const envContext = useMemo<Environment>(() => {
@@ -69,6 +74,7 @@ export const EnvironmentContextProvider = (props: {
       currentUser: currentUser,
       authToken: authToken || localStorageEnv?.authToken || null,
       setCurrentUserSession,
+      resetCurrentUserSession,
       apolloServerUriDebug:
         debugUri || localStorageEnv?.apolloServerUri || null,
     };
@@ -77,6 +83,7 @@ export const EnvironmentContextProvider = (props: {
     currentUser,
     authToken,
     setCurrentUserSession,
+    resetCurrentUserSession,
     debugUri,
     localStorageEnv,
   ]);

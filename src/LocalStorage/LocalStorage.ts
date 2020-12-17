@@ -30,4 +30,12 @@ export namespace LocalStorage {
       console.error('LocalStorage unable to fetch: ' + e);
     }
   }
+
+  export async function remove(key: Keys) {
+    try {
+      return await AsyncStorage.removeItem(key);
+    } catch (e) {
+      console.error('LocalStorage unable to remove: ' + e);
+    }
+  }
 }

@@ -12,6 +12,7 @@ import { useEnvironmentContext } from '../../../MainApp/EnvironmentContext/Envir
 export const WelcomeContainer = () => {
   const envContext = useEnvironmentContext();
   const [logoutUser] = useMutation(gqlLogoutUserMutation);
+
   const didTapLogout = useCallback(async () => {
     try {
       await logoutUser();
@@ -19,10 +20,11 @@ export const WelcomeContainer = () => {
       // Hopefully this should not happen
       console.error(error);
     }
-    // TODO: Reset user session in context
     // This will re-render the home navigation to show the
     // authentication screen
-  }, [logoutUser]);
+    await envContext.resetCurrentUserSession();
+  }, [logoutUser, envContext]);
+
   return (
     <Welcome
       userName={envContext?.currentUser?.name || null}

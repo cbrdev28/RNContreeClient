@@ -12,6 +12,7 @@ const defaultContext: Environment = {
   currentUser: null,
   authToken: null,
   setCurrentUserSession: async () => {},
+  resetCurrentUserSession: async () => {},
 };
 
 export const EnvironmentContext = React.createContext<Environment>(
