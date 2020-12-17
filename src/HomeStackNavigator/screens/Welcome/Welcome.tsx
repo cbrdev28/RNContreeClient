@@ -3,15 +3,20 @@
  */
 
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Button, Text, View } from 'react-native';
 import { useEnvironmentContext } from '../../../MainApp/EnvironmentContext/EnvironmentContextProvider';
 
-export const Welcome = () => {
+interface WelcomeProps {
+  didTapLogout: () => Promise<void>;
+}
+
+export const Welcome = (props: WelcomeProps) => {
   // TODO: move this to the container
   const debugEnv = useEnvironmentContext();
   return (
     <View>
       <Text>Welcome: {debugEnv?.currentUser?.name || 'NO_NAME'}</Text>
+      <Button onPress={props.didTapLogout} title={'Logout'} />
     </View>
   );
 };

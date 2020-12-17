@@ -18,11 +18,7 @@ import {
   gqlSignInUserPayloadDefs,
   gqlSignInUserMutationDefs,
 } from './mutations/signInUserMutation';
-import {
-  gqlEmptyInputDefs,
-  gqlEmptyTypeDefs,
-  gqlLogoutUserMutationDefs,
-} from './mutations/logoutUserMutation';
+import { gqlLogoutUserMutationDefs } from './mutations/logoutUserMutation';
 
 export const NetworkProvider = (props: { children: React.ReactNode }) => {
   const envContext = useEnvironmentContext();
@@ -41,8 +37,6 @@ export const NetworkProvider = (props: { children: React.ReactNode }) => {
       gqlSignInUserPayloadDefs,
       gqlSignInUserMutationDefs,
       // Logout User
-      gqlEmptyTypeDefs,
-      gqlEmptyInputDefs,
       gqlLogoutUserMutationDefs,
     ];
   }, []);
