@@ -2,7 +2,7 @@
  * Container for Authentication screen
  */
 
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useMutation } from '@apollo/client';
 
 import {
@@ -11,8 +11,10 @@ import {
   gqlCreateUserMutation,
 } from '../../../Network/mutations/createUserMutation';
 import { Authentication } from './Authentication';
+import { Messages } from '../../../resources/messages';
 
 export const AuthenticationContainer = () => {
+  const [createUserError, setCreateUserError] = useState('');
   const [createUser] = useMutation<
     CreateUserMutationResponse,
     CreateUserMutationParams
@@ -20,18 +22,26 @@ export const AuthenticationContainer = () => {
 
   const didTapCreateUser = useCallback(
     async ({ email, password, name }) => {
-      // TODO: add try catch and handle error
-      await createUser({
-        variables: {
-          input: {
-            name,
-            credentials: { email, password },
+      try {
+        await createUser({
+          variables: {
+            input: {
+              name,
+              credentials: { email, password },
+            },
           },
-        },
-      });
+        });
+      } catch (error) {
+        setCreateUserError(Messages.authError);
+      }
     },
-    [createUser],
+    [createUser, setCreateUserError],
   );
 
-  return <Authentication didTapCreateUser={didTapCreateUser} />;
+  return (
+    <Authentication
+      didTapCreateUser={didTapCreateUser}
+      createUserError={createUserError}
+    />
+  );
 };

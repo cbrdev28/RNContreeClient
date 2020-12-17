@@ -18,10 +18,11 @@ interface CreateUserCallbackParams {
 
 interface AuthenticationProps {
   didTapCreateUser: (params: CreateUserCallbackParams) => Promise<void>;
+  createUserError?: string;
 }
 
 export const Authentication = (props: AuthenticationProps) => {
-  const { didTapCreateUser } = props;
+  const { didTapCreateUser, createUserError } = props;
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -66,6 +67,14 @@ export const Authentication = (props: AuthenticationProps) => {
         disabled={!name || !email || !password}
         onPress={didTapSignUp}
       />
+      <Text
+        style={
+          (createUserError && [styles.errorPlaceholder, styles.error]) || [
+            styles.errorPlaceholder,
+          ]
+        }>
+        {createUserError}
+      </Text>
     </View>
   );
 };
@@ -89,5 +98,12 @@ const styles = StyleSheet.create({
     borderRadius: Styling.borderRadius,
     padding: Spacing.inset,
     marginBottom: Spacing.verticalInset,
+  },
+  errorPlaceholder: {
+    alignSelf: 'center',
+    color: Color.nothing,
+  },
+  error: {
+    color: Color.error,
   },
 });

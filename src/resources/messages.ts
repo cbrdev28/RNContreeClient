@@ -34,4 +34,5 @@ export namespace Messages {
   export const authenticationPasswordLabel = 'Password:';
   export const authLoginButtonTitle = 'Login';
   export const authSignUpButtonTitle = 'Sign up';
+  export const authError = 'Something went wrong';
 }
