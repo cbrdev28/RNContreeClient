@@ -20,6 +20,7 @@ import {
 } from './mutations/signInUserMutation';
 
 export const NetworkProvider = (props: { children: React.ReactNode }) => {
+  const HEADER_CONTREE_AUTH_TOKEN = 'Contree-Auth-Token';
   const envContext = useEnvironmentContext();
 
   const allSchemaDefs = useMemo(() => {
@@ -43,6 +44,9 @@ export const NetworkProvider = (props: { children: React.ReactNode }) => {
       uri: envContext.apolloServerUriDebug || envContext.apolloServerUri,
       cache: new InMemoryCache(),
       typeDefs: allSchemaDefs,
+      headers: {
+        HEADER_CONTREE_AUTH_TOKEN: envContext?.authToken || '',
+      },
     });
   }, [envContext, allSchemaDefs]);
 
