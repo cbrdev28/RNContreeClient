@@ -37,7 +37,7 @@ export const EnvironmentContextProvider = (props: {
     fetchLocalStorageEnvData();
   }, []);
 
-  const [debugUri, setDebugUri] = useState<string>('');
+  const [debugUri, setDebugUri] = useState<string | null>(null);
   const setApolloServerUriDebug = useCallback(async (apolloUri: string) => {
     await LocalStorage.set(LocalStorage.Keys.apolloServerUri, apolloUri);
     setDebugUri(apolloUri);
@@ -54,24 +54,25 @@ export const EnvironmentContextProvider = (props: {
     [setCurrentUser, setAuthToken],
   );
 
-  // Our default Environment object with static values
-  const defaultEnvContext = useMemo<Environment>(() => {
+  // Build our Environment object for the React
+  const envContext = useMemo<Environment>(() => {
     return {
       apolloServerUri: 'http://127.0.0.1:3000/graphql',
       setApolloServerUriDebug,
       currentUser: currentUser,
       authToken: authToken,
       setCurrentUserSession,
+      apolloServerUriDebug:
+        debugUri || localStorageEnv?.apolloServerUri || null,
     };
-  }, [setApolloServerUriDebug, currentUser, authToken, setCurrentUserSession]);
-
-  // Update Environment with values from local storage
-  const envContext = useMemo<Environment>(() => {
-    return {
-      ...defaultEnvContext,
-      apolloServerUriDebug: debugUri || localStorageEnv?.apolloServerUri,
-    };
-  }, [defaultEnvContext, debugUri, localStorageEnv]);
+  }, [
+    setApolloServerUriDebug,
+    currentUser,
+    authToken,
+    setCurrentUserSession,
+    debugUri,
+    localStorageEnv,
+  ]);
 
   if (loading) {
     return <FullScreenLoadingIndicator />;

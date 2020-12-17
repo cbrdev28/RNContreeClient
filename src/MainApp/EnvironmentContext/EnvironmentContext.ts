@@ -7,6 +7,7 @@ import { Environment } from '../../Environment/Environment';
 
 const defaultContext: Environment = {
   apolloServerUri: 'defaultApolloServerUri',
+  apolloServerUriDebug: null,
   setApolloServerUriDebug: async (_uri: string) => {},
   currentUser: null,
   authToken: null,
