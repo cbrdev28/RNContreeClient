@@ -13,6 +13,11 @@ import {
   gqlCreateUserMutationDefs,
   gqlCreateUserPayloadDefs,
 } from './mutations/createUserMutation';
+import {
+  gqlSignInUserInputDefs,
+  gqlSignInUserPayloadDefs,
+  gqlSignInUserMutationDefs,
+} from './mutations/signInUserMutation';
 
 export const NetworkProvider = (props: { children: React.ReactNode }) => {
   const envContext = useEnvironmentContext();
@@ -26,6 +31,10 @@ export const NetworkProvider = (props: { children: React.ReactNode }) => {
       gqlCreateUserInputDefs,
       gqlCreateUserPayloadDefs,
       gqlCreateUserMutationDefs,
+      // Sign In User
+      gqlSignInUserInputDefs,
+      gqlSignInUserPayloadDefs,
+      gqlSignInUserMutationDefs,
     ];
   }, []);
 
