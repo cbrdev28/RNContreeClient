@@ -20,28 +20,6 @@ interface LocalStorageEnvironmentData {
 export const EnvironmentContextProvider = (props: {
   children: React.ReactNode;
 }) => {
-  const [debugUri, setDebugUri] = useState<string | null>(null);
-  const setApolloServerUriDebug = useCallback(async (apolloUri: string) => {
-    await LocalStorage.set(LocalStorage.Keys.apolloServerUri, apolloUri);
-    setDebugUri(apolloUri);
-  }, []);
-
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [authToken, setAuthToken] = useState<string | null>(null);
-  const setCurrentUserSession = useCallback(
-    async (user: User, token: string) => {
-      await LocalStorage.set(LocalStorage.Keys.authToken, token);
-      setCurrentUser(user);
-      setAuthToken(token);
-    },
-    [setCurrentUser, setAuthToken],
-  );
-  const resetCurrentUserSession = useCallback(async () => {
-    await LocalStorage.remove(LocalStorage.Keys.authToken);
-    setAuthToken(null);
-    setCurrentUser(null);
-  }, [setCurrentUser, setAuthToken]);
-
   const [loading, setLoading] = useState(true);
   const [localStorageEnv, setLocalStorageEnv] = useState<
     LocalStorageEnvironmentData
@@ -64,7 +42,28 @@ export const EnvironmentContextProvider = (props: {
     };
 
     fetchLocalStorageEnvData();
-  }, [authToken]);
+  }, []);
+
+  const [debugUri, setDebugUri] = useState<string | null>(null);
+  const setApolloServerUriDebug = useCallback(async (apolloUri: string) => {
+    await LocalStorage.set(LocalStorage.Keys.apolloServerUri, apolloUri);
+    setDebugUri(apolloUri);
+  }, []);
+
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const setCurrentUserSession = useCallback(
+    async (user: User, token: string) => {
+      await LocalStorage.set(LocalStorage.Keys.authToken, token);
+      setLocalStorageEnv({ authToken: token });
+      setCurrentUser(user);
+    },
+    [setLocalStorageEnv, setCurrentUser],
+  );
+  const resetCurrentUserSession = useCallback(async () => {
+    await LocalStorage.remove(LocalStorage.Keys.authToken);
+    setLocalStorageEnv({ authToken: null });
+    setCurrentUser(null);
+  }, [setCurrentUser, setLocalStorageEnv]);
 
   // Build our Environment object for the React
   const envContext = useMemo<Environment>(() => {
@@ -72,7 +71,7 @@ export const EnvironmentContextProvider = (props: {
       apolloServerUri: 'http://127.0.0.1:3000/graphql',
       setApolloServerUriDebug,
       currentUser: currentUser,
-      authToken: authToken || localStorageEnv?.authToken || null,
+      authToken: localStorageEnv?.authToken || null,
       setCurrentUserSession,
       resetCurrentUserSession,
       apolloServerUriDebug:
@@ -81,7 +80,6 @@ export const EnvironmentContextProvider = (props: {
   }, [
     setApolloServerUriDebug,
     currentUser,
-    authToken,
     setCurrentUserSession,
     resetCurrentUserSession,
     debugUri,
