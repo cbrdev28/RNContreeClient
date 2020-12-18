@@ -12,6 +12,7 @@ import { LocalStorage } from '../../LocalStorage/LocalStorage';
 import { EnvironmentContext } from './EnvironmentContext';
 import { User } from '../../Network/schema.types.ts/User';
 
+// The data which will be loaded from local storage for the Environment
 interface LocalStorageEnvironmentData {
   apolloServerUri?: string | null;
   authToken?: string | null;
@@ -44,11 +45,13 @@ export const EnvironmentContextProvider = (props: {
     fetchLocalStorageEnvData();
   }, []);
 
-  const [debugUri, setDebugUri] = useState<string | null>(null);
-  const setApolloServerUriDebug = useCallback(async (apolloUri: string) => {
-    await LocalStorage.set(LocalStorage.Keys.apolloServerUri, apolloUri);
-    setDebugUri(apolloUri);
-  }, []);
+  const setApolloServerUriDebug = useCallback(
+    async (apolloUri: string) => {
+      await LocalStorage.set(LocalStorage.Keys.apolloServerUri, apolloUri);
+      setLocalStorageEnv({ apolloServerUri: apolloUri });
+    },
+    [setLocalStorageEnv],
+  );
 
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const setCurrentUserSession = useCallback(
@@ -65,7 +68,7 @@ export const EnvironmentContextProvider = (props: {
     setCurrentUser(null);
   }, [setCurrentUser, setLocalStorageEnv]);
 
-  // Build our Environment object for the React
+  // Build our Environment object for the React Context
   const envContext = useMemo<Environment>(() => {
     return {
       apolloServerUri: 'http://127.0.0.1:3000/graphql',
@@ -74,15 +77,13 @@ export const EnvironmentContextProvider = (props: {
       authToken: localStorageEnv?.authToken || null,
       setCurrentUserSession,
       resetCurrentUserSession,
-      apolloServerUriDebug:
-        debugUri || localStorageEnv?.apolloServerUri || null,
+      apolloServerUriDebug: localStorageEnv?.apolloServerUri || null,
     };
   }, [
     setApolloServerUriDebug,
     currentUser,
     setCurrentUserSession,
     resetCurrentUserSession,
-    debugUri,
     localStorageEnv,
   ]);
 
