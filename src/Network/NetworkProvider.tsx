@@ -19,6 +19,10 @@ import {
   gqlSignInUserMutationDefs,
 } from './mutations/signInUserMutation';
 import { gqlLogoutUserMutationDefs } from './mutations/logoutUserMutation';
+import {
+  gqlRecoverSessionQueryDefs,
+  gqlRecoverSessionResponseDefs,
+} from './queries/recoverSessionQuery';
 
 export const NetworkProvider = (props: { children: React.ReactNode }) => {
   const envContext = useEnvironmentContext();
@@ -38,6 +42,9 @@ export const NetworkProvider = (props: { children: React.ReactNode }) => {
       gqlSignInUserMutationDefs,
       // Logout User
       gqlLogoutUserMutationDefs,
+      // Recover Session
+      gqlRecoverSessionResponseDefs,
+      gqlRecoverSessionQueryDefs,
     ];
   }, []);
 
