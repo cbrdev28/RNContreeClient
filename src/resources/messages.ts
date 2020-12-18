@@ -36,5 +36,9 @@ export namespace Messages {
   export const authSignUpButtonTitle = 'Sign up';
   export const authError = 'Something went wrong';
 
+  // Recover session controller
+  export const recoverSessionError = authError;
+
+  // Welcome screen
   export const logout = 'Logout';
 }

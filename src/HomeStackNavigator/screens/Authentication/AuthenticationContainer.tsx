@@ -22,6 +22,7 @@ import {
   SignInUserCallbackParams,
 } from './Authentication';
 import { useEnvironmentContext } from '../../../MainApp/EnvironmentContext/EnvironmentContextProvider';
+import { RecoverSessionController } from './RecoverSessionController';
 
 export const AuthenticationContainer = () => {
   const envContext = useEnvironmentContext();
@@ -107,12 +108,16 @@ export const AuthenticationContainer = () => {
     [createUser, setCreateUserError, setSignInUserError, didTapSignInUser],
   );
 
-  return (
-    <Authentication
-      didTapCreateUser={didTapCreateUser}
-      createUserError={createUserError}
-      didTapSignInUser={didTapSignInUser}
-      signInUserError={signInUserError}
-    />
-  );
+  if (!envContext.authToken) {
+    return (
+      <Authentication
+        didTapCreateUser={didTapCreateUser}
+        createUserError={createUserError}
+        didTapSignInUser={didTapSignInUser}
+        signInUserError={signInUserError}
+      />
+    );
+  } else {
+    return <RecoverSessionController authToken={envContext.authToken} />;
+  }
 };

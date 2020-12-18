@@ -20,6 +20,28 @@ interface LocalStorageEnvironmentData {
 export const EnvironmentContextProvider = (props: {
   children: React.ReactNode;
 }) => {
+  const [debugUri, setDebugUri] = useState<string | null>(null);
+  const setApolloServerUriDebug = useCallback(async (apolloUri: string) => {
+    await LocalStorage.set(LocalStorage.Keys.apolloServerUri, apolloUri);
+    setDebugUri(apolloUri);
+  }, []);
+
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [authToken, setAuthToken] = useState<string | null>(null);
+  const setCurrentUserSession = useCallback(
+    async (user: User, token: string) => {
+      await LocalStorage.set(LocalStorage.Keys.authToken, token);
+      setCurrentUser(user);
+      setAuthToken(token);
+    },
+    [setCurrentUser, setAuthToken],
+  );
+  const resetCurrentUserSession = useCallback(async () => {
+    await LocalStorage.remove(LocalStorage.Keys.authToken);
+    setAuthToken(null);
+    setCurrentUser(null);
+  }, [setCurrentUser, setAuthToken]);
+
   const [loading, setLoading] = useState(true);
   const [localStorageEnv, setLocalStorageEnv] = useState<
     LocalStorageEnvironmentData
@@ -42,29 +64,7 @@ export const EnvironmentContextProvider = (props: {
     };
 
     fetchLocalStorageEnvData();
-  }, []);
-
-  const [debugUri, setDebugUri] = useState<string | null>(null);
-  const setApolloServerUriDebug = useCallback(async (apolloUri: string) => {
-    await LocalStorage.set(LocalStorage.Keys.apolloServerUri, apolloUri);
-    setDebugUri(apolloUri);
-  }, []);
-
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [authToken, setAuthToken] = useState<string | null>(null);
-  const setCurrentUserSession = useCallback(
-    async (user: User, token: string) => {
-      await LocalStorage.set(LocalStorage.Keys.authToken, token);
-      setCurrentUser(user);
-      setAuthToken(token);
-    },
-    [setCurrentUser, setAuthToken],
-  );
-  const resetCurrentUserSession = useCallback(async () => {
-    await LocalStorage.remove(LocalStorage.Keys.authToken);
-    setCurrentUser(null);
-    setAuthToken(null);
-  }, [setCurrentUser, setAuthToken]);
+  }, [authToken]);
 
   // Build our Environment object for the React
   const envContext = useMemo<Environment>(() => {
