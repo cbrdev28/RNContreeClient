@@ -2,14 +2,18 @@
  * Container for the Welcome screen
  */
 
-import React, { useCallback } from 'react';
+import React, { useCallback, useLayoutEffect, useMemo } from 'react';
+import { Button } from 'react-native';
 import { useMutation } from '@apollo/client';
 
 import { gqlLogoutUserMutation } from '../../../Network/mutations/logoutUserMutation';
-import { Welcome } from './Welcome';
 import { useEnvironmentContext } from '../../../MainApp/EnvironmentContext/EnvironmentContextProvider';
+import { Messages } from '../../../resources/messages';
 
-export const WelcomeContainer = () => {
+import { WelcomeNavRouteProp } from './Welcome.types';
+import { Welcome } from './Welcome';
+
+export const WelcomeContainer = ({ navigation }: WelcomeNavRouteProp) => {
   const envContext = useEnvironmentContext();
   const [logoutUser] = useMutation(gqlLogoutUserMutation);
 
@@ -25,10 +29,20 @@ export const WelcomeContainer = () => {
     await envContext.resetCurrentUserSession();
   }, [logoutUser, envContext]);
 
-  return (
-    <Welcome
-      userName={envContext?.currentUser?.name || null}
-      didTapLogout={didTapLogout}
-    />
-  );
+  // The logout button for the right header component
+  const LogoutButton = useMemo(() => {
+    return function LogoutButton_() {
+      return <Button title={Messages.logout} onPress={didTapLogout} />;
+    };
+  }, [didTapLogout]);
+
+  // From React Navigation docs:
+  // https://reactnavigation.org/docs/header-buttons/
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: LogoutButton,
+    });
+  }, [navigation, LogoutButton]);
+
+  return <Welcome userName={envContext?.currentUser?.name || null} />;
 };

@@ -3,21 +3,18 @@
  */
 
 import React from 'react';
-import { Button, Text, View } from 'react-native';
-import { Messages } from '../../../resources/messages';
+import { Text, View } from 'react-native';
 
 interface WelcomeProps {
   userName: string | null;
-  didTapLogout: () => Promise<void>;
 }
 
 export const Welcome = (props: WelcomeProps) => {
-  const { userName, didTapLogout } = props;
+  const { userName } = props;
   return (
     <View>
       {/* TODO: Move this to the container and use the stack navigator header */}
       <Text>Welcome: {userName || 'NO_NAME'}</Text>
-      <Button onPress={didTapLogout} title={Messages.logout} />
     </View>
   );
 };
