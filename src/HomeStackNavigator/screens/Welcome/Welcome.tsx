@@ -15,6 +15,7 @@ export const Welcome = (props: WelcomeProps) => {
   const { userName, didTapLogout } = props;
   return (
     <View>
+      {/* TODO: Move this to the container and use the stack navigator header */}
       <Text>Welcome: {userName || 'NO_NAME'}</Text>
       <Button onPress={didTapLogout} title={Messages.logout} />
     </View>

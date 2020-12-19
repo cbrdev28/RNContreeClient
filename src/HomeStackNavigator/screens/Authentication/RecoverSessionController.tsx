@@ -3,8 +3,8 @@
  * the current user session
  */
 
-import React from 'react';
-import { Text } from 'react-native';
+import React, { useCallback } from 'react';
+import { View, Text, Button } from 'react-native';
 import { useQuery } from '@apollo/client';
 
 import { FullScreenLoadingIndicator } from '../../../components/FullScreenLoadingIndicator/FullScreenLoadingIndicator';
@@ -31,9 +31,13 @@ export const RecoverSessionController = (
     RecoverSessionQueryParams
   >(gqlRecoverSessionQuery, { variables: { authToken } });
 
+  const forceLogout = useCallback(() => {
+    envContext.resetCurrentUserSession();
+  }, [envContext]);
+
   if (error) {
-    // Hopefully this does not happen
-    console.warn(Messages.recoverSessionError, error);
+    // This should not happen
+    console.error(Messages.recoverSessionError, error);
     // Reset user session
     envContext.resetCurrentUserSession();
     return null;
@@ -49,11 +53,21 @@ export const RecoverSessionController = (
     if (!token || !user) {
       // No valid data to recover session, logout user
       envContext.resetCurrentUserSession();
-    } else {
-      // Recover user session
-      envContext.setCurrentUserSession(user, token);
+      return null;
     }
+    // Recover user session with data
+    envContext.setCurrentUserSession(user, token);
+    return null;
   }
 
-  return <Text>{Messages.recoverSessionError}</Text>;
+  // Hopefully we should never get there, since the session should
+  // be reset if anything goes wrong while recovering
+  // Show basic error message and a logout button to give a way
+  // for users to manually reset the session
+  return (
+    <View>
+      <Text>{Messages.recoverSessionError}</Text>
+      <Button title={Messages.logout} onPress={forceLogout} />
+    </View>
+  );
 };
