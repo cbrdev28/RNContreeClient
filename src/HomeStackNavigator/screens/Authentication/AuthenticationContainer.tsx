@@ -1,5 +1,8 @@
 /**
  * Container for Authentication screen
+ * - If the auth token is found in the environment then
+ *   it will attempt to recover the user session
+ * - Otherwise it shows a form to authenticate
  */
 
 import React, { useCallback, useState } from 'react';
