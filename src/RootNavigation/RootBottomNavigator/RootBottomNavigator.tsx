@@ -21,13 +21,13 @@ export const RootBottomNavigator = () => {
   return (
     <BottomTabNavigator.Navigator>
       <BottomTabNavigator.Screen
-        name={RootBottomNavigatorRoutes.rnDemoApp}
-        component={RootBottomNavigatorScreens.rnDemoApp}
-      />
-      <BottomTabNavigator.Screen
         name={RootBottomNavigatorRoutes.home}
         component={RootBottomNavigatorScreens.home}
         options={{ title: Messages.homeBottomBarButtonTitle }}
+      />
+      <BottomTabNavigator.Screen
+        name={RootBottomNavigatorRoutes.rnDemoApp}
+        component={RootBottomNavigatorScreens.rnDemoApp}
       />
       <BottomTabNavigator.Screen
         name={RootBottomNavigatorRoutes.debugScreen}

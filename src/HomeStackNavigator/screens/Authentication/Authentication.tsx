@@ -58,6 +58,7 @@ export const Authentication = (props: AuthenticationProps) => {
         onChangeText={setEmail}
         keyboardType={'email-address'}
         autoCapitalize={'none'}
+        autoCorrect={false}
       />
 
       <Text style={styles.inputLabel}>
@@ -84,7 +85,11 @@ export const Authentication = (props: AuthenticationProps) => {
       </Text>
 
       <Text style={styles.inputLabel}>{Messages.authenticationNameLabel}</Text>
-      <TextInput style={styles.inputText} onChangeText={setName} />
+      <TextInput
+        style={styles.inputText}
+        onChangeText={setName}
+        autoCorrect={false}
+      />
 
       <Button
         title={Messages.authSignUpButtonTitle}
