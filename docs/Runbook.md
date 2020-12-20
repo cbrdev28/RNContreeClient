@@ -120,3 +120,9 @@ About our AsyncStorage wrapper:
 ### First query in Debug Screen
 
 I'm going to play around with Apollo and make a first query of the debug screen.
+
+## Experiment with Authentication
+
+- Make a screen for users to login or sign up
+- Make a welcome screen for logged in users
+- Try to recover user session if the token is available in the local storage

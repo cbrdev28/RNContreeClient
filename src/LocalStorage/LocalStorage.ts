@@ -12,6 +12,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export namespace LocalStorage {
   export enum Keys {
     apolloServerUri = 'apolloServerUri',
+    authToken = 'authToken',
   }
 
   export async function set(key: Keys, value: string) {
@@ -27,6 +28,14 @@ export namespace LocalStorage {
       return await AsyncStorage.getItem(key);
     } catch (e) {
       console.error('LocalStorage unable to fetch: ' + e);
+    }
+  }
+
+  export async function remove(key: Keys) {
+    try {
+      return await AsyncStorage.removeItem(key);
+    } catch (e) {
+      console.error('LocalStorage unable to remove: ' + e);
     }
   }
 }

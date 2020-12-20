@@ -4,6 +4,6 @@
  */
 
 export enum RootNavigationRoutes {
-  RootBottomNavigator = 'RootBottomNavigator',
-  TextInputModal = 'TextInputModal',
+  rootBottomNavigator = 'rootBottomNavigator',
+  textInputModal = 'textInputModal',
 }

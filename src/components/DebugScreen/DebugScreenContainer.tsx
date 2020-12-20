@@ -5,9 +5,9 @@
 import React, { useCallback } from 'react';
 import { gql, useQuery } from '@apollo/client';
 
-import { useEnvironmentContext } from '../MainApp/EnvironmentContext/EnvironmentContextProvider';
-import { DebugScreenNavRouteProp } from '../RootNavigation/RootBottomNavigator/RootBottomNavigator.types';
-import { RootNavigationRoutes } from '../RootNavigation/RootNavigation.routes';
+import { useEnvironmentContext } from '../../MainApp/EnvironmentContext/EnvironmentContextProvider';
+import { DebugScreenNavRouteProp } from '../../RootNavigation/RootBottomNavigator/RootBottomNavigator.types';
+import { RootNavigationRoutes } from '../../RootNavigation/RootNavigation.routes';
 import { DebugScreen } from './DebugScreen';
 
 interface DebugUserData {
@@ -34,7 +34,7 @@ export const DebugScreenContainer = ({
   const envContext = useEnvironmentContext();
 
   const showModal = useCallback(() => {
-    navigation.navigate(RootNavigationRoutes.TextInputModal);
+    navigation.navigate(RootNavigationRoutes.textInputModal);
   }, [navigation]);
 
   const gqlQuery = gql`
@@ -54,7 +54,7 @@ export const DebugScreenContainer = ({
     DebugRecoverSessionResponse,
     DebugRecoverSessionParams
   >(gqlQuery, {
-    variables: { authToken: 'tzlyp:2' },
+    variables: { authToken: envContext?.authToken || '' },
   });
   if (error) {
     console.error('Error: ', error);

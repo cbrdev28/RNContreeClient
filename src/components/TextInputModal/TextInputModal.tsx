@@ -7,6 +7,11 @@
 import React, { useCallback, useState } from 'react';
 import { Keyboard, StyleSheet, Text, View, TextInput } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Messages } from '../../resources/messages';
+import { Color } from '../../styling/colors';
+import { FontSize } from '../../styling/fonts';
+import { Spacing } from '../../styling/spacing';
+import { Styling } from '../../styling/styling';
 
 interface TextInputModalProps {
   onDismiss: () => void;
@@ -34,7 +39,7 @@ export const TextInputModal = (props: TextInputModalProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.title}>Enter server URI:</Text>
+        <Text style={styles.title}>{Messages.textInputModalTitle}</Text>
         <TextInput
           style={styles.textInput}
           value={inputText}
@@ -51,10 +56,14 @@ export const TextInputModal = (props: TextInputModalProps) => {
           <TouchableOpacity
             style={[styles.button, styles.submitButton]}
             onPress={onSubmitText}>
-            <Text style={[styles.buttonText, styles.submitText]}>Submit</Text>
+            <Text style={[styles.buttonText, styles.submitText]}>
+              {Messages.textInputModalSubmitButton}
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={onDismissModal}>
-            <Text style={styles.buttonText}>Dismiss</Text>
+            <Text style={styles.buttonText}>
+              {Messages.textInputModalDismissButton}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -66,48 +75,41 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: 32,
+    paddingHorizontal: Spacing.largeInset,
   },
   content: {
-    padding: 16,
-    backgroundColor: 'white',
-    shadowColor: 'gray',
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.5,
-    shadowRadius: 8,
-    elevation: 4,
+    padding: Spacing.contentInset,
+    backgroundColor: Color.modalBackground,
+    ...Styling.modalShadow,
   },
   title: {
-    fontSize: 18,
-    marginBottom: 4,
+    fontSize: FontSize.header,
+    marginBottom: Spacing.verticalContentInset,
   },
   textInput: {
-    borderColor: 'blue',
-    borderWidth: 1,
-    borderRadius: 4,
-    padding: 8,
-    marginBottom: 4,
+    borderColor: Color.input,
+    borderWidth: Styling.borderWidth,
+    borderRadius: Styling.borderRadius,
+    padding: Spacing.inset,
+    marginBottom: Spacing.verticalContentInset,
   },
   buttons: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   button: {
-    borderWidth: 1,
-    borderRadius: 4,
-    paddingVertical: 8,
-    paddingHorizontal: 32,
+    borderWidth: Styling.borderWidth,
+    borderRadius: Styling.borderRadius,
+    paddingVertical: Spacing.inset,
+    paddingHorizontal: Spacing.largeInset,
   },
   submitButton: {
-    borderColor: 'green',
+    borderColor: Color.active,
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: FontSize.button,
   },
   submitText: {
-    color: 'green',
+    color: Color.active,
   },
 });

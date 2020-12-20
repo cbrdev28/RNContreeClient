@@ -8,6 +8,7 @@
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { RootNavigationRoutes } from '../RootNavigation.routes';
 import { RootModalStackNavigatorParams } from '../RootNavigation.types';
 import { RootBottomNavigatorRoutes } from './RootBottomNavigator.routes';
 
@@ -26,9 +27,10 @@ interface DebugScreenNavParams {
  * This provides type checking for nav params.
  */
 export type BottomTabNavigatorParams = {
-  [RootBottomNavigatorRoutes.DebugScreen]: DebugScreenNavParams;
+  [RootBottomNavigatorRoutes.debugScreen]: DebugScreenNavParams;
   // The React Native demo app will not have any params
-  [RootBottomNavigatorRoutes.RNDemoApp]: undefined;
+  [RootBottomNavigatorRoutes.rnDemoApp]: undefined;
+  [RootBottomNavigatorRoutes.home]: undefined;
 };
 
 /**
@@ -39,7 +41,7 @@ export type BottomTabNavigatorParams = {
  */
 type DebugScreenRouteProp = RouteProp<
   BottomTabNavigatorParams,
-  RootBottomNavigatorRoutes.DebugScreen
+  RootBottomNavigatorRoutes.debugScreen
 >;
 
 /**
@@ -49,10 +51,13 @@ type DebugScreenRouteProp = RouteProp<
  * react navigation when adding a screen.
  */
 type DebugScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<RootModalStackNavigatorParams>,
+  StackNavigationProp<
+    RootModalStackNavigatorParams,
+    RootNavigationRoutes.rootBottomNavigator
+  >,
   BottomTabNavigationProp<
     BottomTabNavigatorParams,
-    RootBottomNavigatorRoutes.DebugScreen
+    RootBottomNavigatorRoutes.debugScreen
   >
 >;
 

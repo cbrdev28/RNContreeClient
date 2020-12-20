@@ -11,6 +11,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabNavigatorParams } from './RootBottomNavigator.types';
 import { RootBottomNavigatorRoutes } from './RootBottomNavigator.routes';
 import { RootBottomNavigatorScreens } from './RootBottomNavigator.screens';
+import { Messages } from '../../resources/messages';
 
 export const RootBottomNavigator = () => {
   const BottomTabNavigator = createBottomTabNavigator<
@@ -20,13 +21,18 @@ export const RootBottomNavigator = () => {
   return (
     <BottomTabNavigator.Navigator>
       <BottomTabNavigator.Screen
-        name={RootBottomNavigatorRoutes.RNDemoApp}
-        component={RootBottomNavigatorScreens.RNDemoApp}
+        name={RootBottomNavigatorRoutes.home}
+        component={RootBottomNavigatorScreens.home}
+        options={{ title: Messages.homeBottomBarButtonTitle }}
       />
       <BottomTabNavigator.Screen
-        name={RootBottomNavigatorRoutes.DebugScreen}
-        component={RootBottomNavigatorScreens.DebugScreen}
-        initialParams={{ testNavParam: 'Test param' }}
+        name={RootBottomNavigatorRoutes.rnDemoApp}
+        component={RootBottomNavigatorScreens.rnDemoApp}
+      />
+      <BottomTabNavigator.Screen
+        name={RootBottomNavigatorRoutes.debugScreen}
+        component={RootBottomNavigatorScreens.debugScreen}
+        initialParams={{ testNavParam: 'Initial param' }}
       />
     </BottomTabNavigator.Navigator>
   );

@@ -10,20 +10,20 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootNavigationRoutes } from './RootNavigation.routes';
 
 export type RootModalStackNavigatorParams = {
-  [RootNavigationRoutes.RootBottomNavigator]: undefined;
-  [RootNavigationRoutes.TextInputModal]: undefined;
+  [RootNavigationRoutes.rootBottomNavigator]: undefined;
+  [RootNavigationRoutes.textInputModal]: undefined;
 };
 
 // Define route type for the text input modal container
 type TextInputModalRouteProp = RouteProp<
   RootModalStackNavigatorParams,
-  RootNavigationRoutes.TextInputModal
+  RootNavigationRoutes.textInputModal
 >;
 
 // Define navigation type for the text input modal container
 type TextInputModalNavProp = StackNavigationProp<
   RootModalStackNavigatorParams,
-  RootNavigationRoutes.TextInputModal
+  RootNavigationRoutes.textInputModal
 >;
 
 // Type to be used by TextInputModalContainer props

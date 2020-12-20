@@ -4,6 +4,9 @@
 
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Color } from '../../styling/colors';
+import { Spacing } from '../../styling/spacing';
+import { Styling } from '../../styling/styling';
 
 interface LabelValueTextProps {
   label: string;
@@ -25,9 +28,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
 
-    borderBottomColor: 'gray',
-    borderBottomWidth: 1,
+    borderBottomColor: Color.borderColor,
+    borderBottomWidth: Styling.borderWidth,
 
-    padding: 8,
+    padding: Spacing.inset,
   },
 });

@@ -19,13 +19,13 @@ export const RootNavigationController = () => {
   return (
     <RootModalStackNavigator.Navigator mode="modal">
       <RootModalStackNavigator.Screen
-        name={RootNavigationRoutes.RootBottomNavigator}
-        component={RootNavigationScreens.RootBottomNavigator}
+        name={RootNavigationRoutes.rootBottomNavigator}
+        component={RootNavigationScreens.rootBottomNavigator}
         options={{ headerShown: false }}
       />
       <RootModalStackNavigator.Screen
-        name={RootNavigationRoutes.TextInputModal}
-        component={RootNavigationScreens.TextInputModal}
+        name={RootNavigationRoutes.textInputModal}
+        component={RootNavigationScreens.textInputModal}
         options={{
           headerShown: false,
           cardStyle: { backgroundColor: 'transparent' },

@@ -3,6 +3,7 @@
  */
 
 export enum RootBottomNavigatorRoutes {
-  DebugScreen = 'DebugScreen',
-  RNDemoApp = 'RNDemoApp',
+  debugScreen = 'debugScreen',
+  rnDemoApp = 'rnDemoApp',
+  home = 'home',
 }
