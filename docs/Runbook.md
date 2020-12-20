@@ -126,3 +126,10 @@ I'm going to play around with Apollo and make a first query of the debug screen.
 - Make a screen for users to login or sign up
 - Make a welcome screen for logged in users
 - Try to recover user session if the token is available in the local storage
+
+## Experiment with GraphQL Subscriptions & Action Cable from Rails
+
+A way to send/receive data synchronously:
+
+- Mhttps://www.apollographql.com/docs/react/data/subscriptions/
+- https://graphql-ruby.org/javascript_client/apollo_subscriptions#apollo-2--actioncable
